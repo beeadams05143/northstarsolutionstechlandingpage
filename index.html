@@ -215,25 +215,29 @@ h1{
 }
 
 .actions{
-    display:flex;
-    flex-wrap:wrap;
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
     gap:14px;
     margin-top:30px;
 }
 
-.hero-mini{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    margin-top:22px;
-    padding:9px 13px;
-    border-radius:999px;
+.actions .btn{
+    width:100%;
+    padding-inline:16px;
+    text-align:center;
+}
+
+.btn.star-action{
     color:#eaf4ec;
     background:rgba(126,169,154,.14);
     border:1px solid rgba(198,222,211,.22);
-    font-size:.9rem;
-    font-weight:800;
+    box-shadow:none;
     backdrop-filter:blur(14px);
+}
+
+.btn.star-action:hover{
+    background:rgba(126,169,154,.24);
+    box-shadow:0 18px 36px rgba(0,0,0,.14);
 }
 
 .btn{
@@ -277,7 +281,7 @@ h1{
 
 .hero-visual{
     position:relative;
-    min-height:500px;
+    min-height:560px;
     display:grid;
     place-items:center;
 }
@@ -294,7 +298,8 @@ h1{
 
 .workbook{
     position:relative;
-    width:min(360px,82vw);
+    z-index:2;
+    width:min(330px,68vw);
     aspect-ratio:.72/1;
     border-radius:22px;
     padding:30px;
@@ -302,6 +307,7 @@ h1{
         linear-gradient(180deg,rgba(255,255,255,.045),transparent 18%),
         linear-gradient(180deg,#20120e 0%,#1a100d 54%,#3a2114 100%);
     box-shadow:0 34px 90px rgba(0,0,0,.42), inset 0 0 0 1px rgba(255,228,188,.12);
+    margin-left:-110px;
     transform:rotate(-4deg);
     animation:floatBook 7s ease-in-out infinite;
 }
@@ -420,29 +426,73 @@ h1{
     white-space:nowrap;
 }
 
-.floating-note{
+.concept-stack{
     position:absolute;
-    right:-7%;
-    bottom:28px;
-    width:166px;
-    border-radius:18px;
+    z-index:3;
+    right:-5%;
+    display:grid;
+    gap:14px;
+    width:210px;
+}
+
+.concept-card{
+    position:relative;
+    overflow:hidden;
+    min-height:168px;
+    border-radius:22px;
     padding:16px;
     color:white;
-    background:rgba(255,255,255,.1);
-    border:1px solid rgba(255,255,255,.18);
-    box-shadow:0 18px 44px rgba(0,0,0,.2);
+    background:
+        radial-gradient(circle at 84% 12%,rgba(34,204,222,.2),transparent 35%),
+        radial-gradient(circle at 12% 88%,rgba(143,64,237,.22),transparent 40%),
+        rgba(3,8,20,.82);
+    border:1px solid rgba(34,204,222,.24);
+    box-shadow:0 18px 44px rgba(0,0,0,.28),0 0 28px rgba(34,204,222,.1);
     backdrop-filter:blur(18px);
-    animation:floatNote 6.4s ease-in-out infinite;
 }
 
-.floating-note strong{
+.concept-card:first-child{
+    transform:rotate(2deg);
+}
+
+.concept-card:last-child{
+    transform:translateX(-16px) rotate(-2deg);
+}
+
+.concept-logo{
+    width:54px;
+    height:54px;
+    display:block;
+    margin-bottom:10px;
+    border-radius:16px;
+    background-color:#000;
+    background-image:url("nsst-logo.jpg");
+    background-repeat:no-repeat;
+    background-size:178%;
+    background-position:50% 19%;
+    box-shadow:0 0 24px rgba(34,204,222,.2);
+}
+
+.concept-card strong{
     display:block;
     line-height:1.15;
+    margin-bottom:6px;
 }
 
-.floating-note span{
+.concept-card span{
+    display:block;
     color:rgba(255,255,255,.7);
-    font-size:.82rem;
+    font-size:.75rem;
+    line-height:1.4;
+}
+
+.concept-status{
+    margin-top:10px;
+    color:#d9fbff !important;
+    font-size:.65rem !important;
+    font-weight:900;
+    letter-spacing:.08em;
+    text-transform:uppercase;
 }
 
 .section{
@@ -451,10 +501,40 @@ h1{
 }
 
 .section.dark{
+    overflow:hidden;
     color:white;
     background:
-        radial-gradient(circle at 20% 0%,rgba(250,199,117,.16),transparent 32%),
-        linear-gradient(180deg,var(--navy) 0%,#172033 100%);
+        radial-gradient(circle at 18% 8%,rgba(143,64,237,.24),transparent 30%),
+        radial-gradient(circle at 82% 18%,rgba(34,204,222,.2),transparent 30%),
+        radial-gradient(circle at 52% 92%,rgba(43,117,226,.16),transparent 34%),
+        linear-gradient(140deg,#02040a 0%,#091225 48%,#10223c 100%);
+    box-shadow:inset 0 1px 0 rgba(34,204,222,.18);
+}
+
+.section.dark:before,
+.section.dark:after{
+    content:"";
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+}
+
+.section.dark:before{
+    opacity:.58;
+    background-image:
+        radial-gradient(circle,rgba(255,255,255,.82) 1px,transparent 1.5px),
+        radial-gradient(circle,rgba(34,204,222,.72) 1px,transparent 1.7px),
+        radial-gradient(circle,rgba(143,64,237,.7) 1px,transparent 1.8px);
+    background-size:82px 82px,136px 136px,188px 188px;
+    background-position:0 0,34px 22px,80px 44px;
+}
+
+.section.dark:after{
+    background:
+        linear-gradient(transparent 0,rgba(34,204,222,.04) 1px,transparent 1px),
+        linear-gradient(90deg,transparent 0,rgba(143,64,237,.04) 1px,transparent 1px);
+    background-size:54px 54px;
+    mask-image:linear-gradient(to bottom,rgba(0,0,0,.75),transparent 92%);
 }
 
 .section.soft{
@@ -483,6 +563,8 @@ h1{
 }
 
 .container{
+    position:relative;
+    z-index:1;
     width:min(1120px,100%);
     margin:auto;
 }
@@ -517,10 +599,13 @@ h1{
 
 .product-card.gigos{
     background:
-        radial-gradient(circle at 80% 14%,rgba(255,139,31,.2),transparent 26%),
-        radial-gradient(circle at 16% 86%,rgba(255,189,74,.12),transparent 28%),
-        linear-gradient(145deg,#20120e 0%,#28160f 52%,#3a2114 100%);
-    border-color:rgba(255,228,188,.14);
+        radial-gradient(circle at 8% 12%,rgba(143,64,237,.2),transparent 25%),
+        radial-gradient(circle at 92% 15%,rgba(34,204,222,.14),transparent 25%),
+        radial-gradient(circle at 80% 22%,rgba(255,139,31,.2),transparent 28%),
+        radial-gradient(circle at 18% 88%,rgba(255,189,74,.12),transparent 30%),
+        linear-gradient(145deg,#171322 0%,#28160f 48%,#3a2114 78%,#13243a 100%);
+    border-color:rgba(126,189,204,.24);
+    box-shadow:0 22px 70px rgba(2,4,10,.28),0 0 34px rgba(34,204,222,.08);
 }
 
 .product-card.star{
@@ -667,6 +752,29 @@ h1{
     font-size:.95rem;
 }
 
+.gigos-workbook-note{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:10px;
+    margin:24px 0;
+}
+
+.gigos-workbook-note div{
+    border-radius:18px;
+    padding:15px;
+    color:rgba(255,246,223,.8);
+    background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,189,74,.18);
+    font-size:.84rem;
+}
+
+.gigos-workbook-note strong{
+    display:block;
+    margin-bottom:4px;
+    color:#fff6df;
+    font-size:.92rem;
+}
+
 .feature-list li{
     border-radius:999px;
     padding:9px 12px;
@@ -714,6 +822,18 @@ h1{
     flex-wrap:wrap;
     gap:12px;
     margin-top:8px;
+}
+
+.gigos .action-grid{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+}
+
+.gigos .action-grid .btn{
+    width:100%;
+    min-width:0;
+    padding-inline:14px;
+    text-align:center;
 }
 
 .btn.muted{
@@ -1096,8 +1216,8 @@ footer{
         min-height:450px;
     }
 
-    .floating-note{
-        right:2%;
+    .concept-stack{
+        right:0;
     }
 }
 
@@ -1118,6 +1238,10 @@ footer{
     .actions,
     .btn{
         width:100%;
+    }
+
+    .actions{
+        grid-template-columns:1fr;
     }
 
     .section{
@@ -1167,10 +1291,36 @@ footer{
         font-size:.5rem;
     }
 
-    .floating-note{
-        width:148px;
-        bottom:16px;
-        right:-4px;
+    .hero-visual{
+        align-content:start;
+        gap:18px;
+        padding-top:18px;
+    }
+
+    .workbook{
+        width:min(300px,76vw);
+        margin-left:0;
+        transform:rotate(-4deg);
+    }
+
+    .concept-stack{
+        position:relative;
+        right:auto;
+        width:100%;
+        grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+
+    .concept-card{
+        min-height:158px;
+    }
+
+    .concept-card:first-child,
+    .concept-card:last-child{
+        transform:none;
+    }
+
+    .gigos-workbook-note{
+        grid-template-columns:1fr;
     }
 
     .action-grid,
@@ -1178,9 +1328,14 @@ footer{
         width:100%;
     }
 
+    .gigos .action-grid{
+        grid-template-columns:1fr;
+    }
+
     .interest-grid{
         grid-template-columns:1fr;
     }
+
 }
 </style>
 </head>
@@ -1198,7 +1353,6 @@ footer{
                     <a href="#gigos">GigOS</a>
                     <a href="#resources">Resources</a>
                     <a href="#star">STAR App</a>
-                    <a href="#waitlist">Waitlist</a>
                 </div>
             </nav>
 
@@ -1208,14 +1362,14 @@ footer{
                     <p class="hero-copy">
                         Software platforms, operational tools, educational resources, workflow supports, digital products, and practical solution ecosystems designed to address meaningful everyday problems across diverse professions, industries, communities, and lived experiences.
                     </p>
-                    <div class="hero-mini">⭐ STAR App — Coming Soon</div>
                     <div class="actions">
                         <a href="#gigos" class="btn">Get Free Contract Builder</a>
                         <a href="#products" class="btn secondary">Explore Products</a>
+                        <a href="#star" class="btn star-action">⭐ STAR App — Coming Soon</a>
                     </div>
                 </div>
 
-                <div class="hero-visual" aria-label="GigOS workbook preview">
+                <div class="hero-visual" aria-label="North Star product previews">
                     <div class="glow-orbit"></div>
                     <div class="workbook">
                         <div class="cover-front">
@@ -1249,9 +1403,19 @@ footer{
                             </div>
                         </div>
                     </div>
-                    <div class="floating-note">
-                        <strong>Contracts, gigs, outreach</strong>
-                        <span>organized in one creator-friendly system</span>
+                    <div class="concept-stack" aria-label="Products in development">
+                        <div class="concept-card">
+                            <div class="concept-logo" aria-hidden="true"></div>
+                            <strong>STAR App</strong>
+                            <span>Human-centered support, communication, tracking, and reflection.</span>
+                            <span class="concept-status">In development</span>
+                        </div>
+                        <div class="concept-card">
+                            <div class="concept-logo" aria-hidden="true"></div>
+                            <strong>Person-Centered Planning Log Book</strong>
+                            <span>A planning and documentation resource for parents and caregivers.</span>
+                            <span class="concept-status">Working concept</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1296,10 +1460,21 @@ footer{
                             </div>
                         </div>
                     </div>
-                    <h3>GigOS — Workbook, App, and Booking System</h3>
+                    <h3>GigOS — Workbooks, App, and Booking System</h3>
                     <p>
-                        GigOS helps independent musicians organize gigs, build contracts, manage bookings, create systems, and grow sustainable music careers.
+                        GigOS brings practical workbooks, digital tools, and booking systems together to help independent musicians organize gigs, build contracts, manage bookings, and grow sustainable music careers.
                     </p>
+
+                    <div class="gigos-workbook-note">
+                        <div>
+                            <strong>GigOS Music Business Workbook</strong>
+                            Available now on Amazon with field notes, systems, planners, and practical tools.
+                        </div>
+                        <div>
+                            <strong>Second GigOS Workbook</strong>
+                            A new workbook for independent musicians is currently in development.
+                        </div>
+                    </div>
 
                     <div class="gigos-app-callout">
                         <strong>GigOS App — Coming Soon</strong>
@@ -1309,15 +1484,15 @@ footer{
                     <ul class="feature-list">
                         <li>Contract Builder</li>
                         <li>Outreach Templates</li>
-                        <li>Workbook Resources</li>
+                        <li>Workbook Collection</li>
                         <li>Booking Tools</li>
-                        <li>New Workbook in Progress — Coming Soon</li>
+                        <li>New Resources in Progress</li>
                     </ul>
 
                     <div class="action-grid">
                         <a href="#waitlist" class="btn app-btn">Join GigOS App Waitlist</a>
                         <a href="YOUR_GOOGLE_DOC_LINK_HERE" class="btn" target="_blank" rel="noopener">Get Free Contract Builder</a>
-                        <a href="https://a.co/d/070O4UgT" class="btn secondary" target="_blank" rel="noopener">Buy GigOS Workbook on Amazon</a>
+                        <a href="https://a.co/d/070O4UgT" class="btn secondary" target="_blank" rel="noopener">Explore GigOS Workbooks on Amazon</a>
                     </div>
                 </article>
 
@@ -1352,65 +1527,17 @@ footer{
         </div>
     </section>
 
-    <section class="section soft" id="resources">
+    <section class="section waitlist" id="resources">
         <div class="container">
-            <article class="resource-card workbook-showcase">
-                <div class="workbook-mini-cover" aria-hidden="true">
-                    <div class="cover-front">
-                        <div class="cover-kicker">▲ Independent Musician System ▲</div>
-                        <svg class="cover-slider" viewBox="0 0 180 78" role="img" aria-label="GigOS slider logo">
-                            <rect class="slider-track" x="24" y="10" width="132" height="8" rx="4"></rect>
-                            <circle class="slider-knob" cx="78" cy="14" r="13"></circle>
-                            <rect class="slider-track" x="24" y="35" width="132" height="8" rx="4"></rect>
-                            <circle class="slider-knob" cx="111" cy="39" r="13"></circle>
-                            <rect class="slider-track" x="24" y="60" width="132" height="8" rx="4"></rect>
-                            <circle class="slider-knob" cx="92" cy="64" r="13"></circle>
-                        </svg>
-                        <h2 class="cover-title">GigOS<sup>TM</sup></h2>
-                        <div class="cover-rule" aria-hidden="true"></div>
-                        <p class="cover-subtitle">The Operating System for Booking More Shows</p>
-                        <div class="cover-meta">Workbook · Planner · Performance System</div>
-                        <div class="cover-list" aria-label="GigOS workbook modules">
-                            <span>01 Venue Finder</span>
-                            <span>02 Brand Builder</span>
-                            <span>03 Audience Resonance</span>
-                            <span>04 Named Set Builder</span>
-                            <span>05 Energy Mapping</span>
-                            <span>06 Show Flow Planner</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="waitlist-panel" id="waitlist">
                 <div>
-                    <span class="eyebrow">Amazon workbook</span>
-                    <h2>GigOS Music Business Workbook</h2>
+                    <span class="eyebrow">Resources coming soon</span>
+                    <h2>Help Shape What We Build Next</h2>
                     <p>
-                        Field notes, systems, planners, practical tools for independent musicians.
-                    </p>
-                    <ul class="badge-row">
-                        <li class="mini-badge">Creator systems</li>
-                        <li class="mini-badge">Booking workflow</li>
-                        <li class="mini-badge">Practical planning</li>
-                    </ul>
-                    <div class="action-grid">
-                        <a href="https://a.co/d/070O4UgT" class="btn" target="_blank" rel="noopener">Buy on Amazon</a>
-                        <span class="btn muted">Bonus Resources — Coming Soon</span>
-                    </div>
-                </div>
-            </article>
-        </div>
-    </section>
-
-    <section class="section waitlist" id="waitlist">
-        <div class="container">
-            <div class="waitlist-panel">
-                <div>
-                    <span class="eyebrow">Stay in the loop</span>
-                    <h2>Stay in the Loop</h2>
-                    <p>
-                        Get updates on GigOS tools, STAR App previews, workbook resources, workshops, and future releases.
+                        North Star Solutions Tech is creating practical tools, workbooks, apps, and resources for more industries, professions, and communities.
                     </p>
                     <p class="small">
-                        You can connect this to Mailchimp, ConvertKit, Formspark, or Netlify Forms later.
+                        Tell us what would make your work or daily life easier, and join the waitlist for GigOS, STAR, and future releases.
                     </p>
                 </div>
 
@@ -1423,9 +1550,11 @@ footer{
                         <label><input type="checkbox" name="interest" value="STAR App"> STAR App</label>
                         <label><input type="checkbox" name="interest" value="Workbook Resources"> Workbook Resources</label>
                         <label><input type="checkbox" name="interest" value="Workshops"> Workshops</label>
-                        <label><input type="checkbox" name="interest" value="Future North Star Tools / New Releases"> Future North Star Tools / New Releases</label>
+                        <label><input type="checkbox" name="interest" value="Future Tools and Resources"> Future Tools and Resources</label>
                     </div>
-                    <textarea name="notes" placeholder="What are you most interested in or excited about?"></textarea>
+                    <input type="text" name="desired-resource" placeholder="What product, tool, or resource would you like to see?">
+                    <input type="text" name="audience" placeholder="What industry, profession, or community should it support?">
+                    <textarea name="notes" placeholder="Anything else you would like us to know?"></textarea>
                     <button class="btn" type="submit">Join Waitlist</button>
                     <p class="form-status" role="status" aria-live="polite"></p>
                 </form>
@@ -1448,11 +1577,21 @@ waitlistForm.addEventListener("submit", async (event) => {
     const statusMessage = waitlistForm.querySelector(".form-status");
     const formData = new FormData(waitlistForm);
     const interests = formData.getAll("interest").join(", ");
+    const desiredResource = formData.get("desired-resource").trim();
+    const audience = formData.get("audience").trim();
+    const additionalNotes = formData.get("notes").trim();
+    const notes = [
+        desiredResource && `Requested resource: ${desiredResource}`,
+        audience && `Intended audience: ${audience}`,
+        additionalNotes
+    ].filter(Boolean).join("\n");
     const payload = {
         name: formData.get("name").trim(),
         email: formData.get("email").trim(),
         interests,
-        notes: formData.get("notes").trim(),
+        desiredResource,
+        audience,
+        notes,
         source: "North Star Landing Page",
         submittedAt: new Date().toISOString()
     };
