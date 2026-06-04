@@ -426,44 +426,153 @@ h1{
     white-space:nowrap;
 }
 
-.concept-stack{
+.product-mockups{
     position:absolute;
     z-index:3;
-    right:-5%;
-    display:grid;
-    gap:14px;
-    width:210px;
+    right:-7%;
+    display:flex;
+    align-items:flex-end;
+    gap:16px;
 }
 
-.concept-card{
+.phone-mockup{
     position:relative;
-    overflow:hidden;
-    min-height:168px;
-    border-radius:22px;
-    padding:16px;
+    width:174px;
+    min-height:344px;
+    border-radius:34px;
+    padding:12px 10px 18px;
     color:white;
     background:
         radial-gradient(circle at 84% 12%,rgba(34,204,222,.2),transparent 35%),
         radial-gradient(circle at 12% 88%,rgba(143,64,237,.22),transparent 40%),
-        rgba(3,8,20,.82);
-    border:1px solid rgba(34,204,222,.24);
-    box-shadow:0 18px 44px rgba(0,0,0,.28),0 0 28px rgba(34,204,222,.1);
-    backdrop-filter:blur(18px);
+        #030814;
+    border:4px solid #182238;
+    box-shadow:0 24px 60px rgba(0,0,0,.42),0 0 30px rgba(34,204,222,.14);
+    transform:rotate(3deg);
 }
 
-.concept-card:first-child{
-    transform:rotate(2deg);
-}
-
-.concept-card:last-child{
-    transform:translateX(-16px) rotate(-2deg);
-}
-
-.concept-logo{
-    width:54px;
-    height:54px;
+.phone-mockup:before{
+    content:"";
     display:block;
-    margin-bottom:10px;
+    width:54px;
+    height:6px;
+    margin:0 auto 14px;
+    border-radius:999px;
+    background:#202b40;
+}
+
+.phone-screen{
+    display:grid;
+    gap:10px;
+}
+
+.phone-title{
+    color:rgba(232,247,255,.58);
+    font-size:.58rem;
+    font-weight:900;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+}
+
+.app-tile{
+    min-height:126px;
+    border-radius:22px;
+    padding:13px;
+    background:rgba(255,255,255,.07);
+    border:1px solid rgba(34,204,222,.18);
+}
+
+.app-tile.gigos-app{
+    border-color:rgba(255,189,74,.22);
+    background:
+        radial-gradient(circle at 86% 10%,rgba(255,139,31,.18),transparent 38%),
+        rgba(255,255,255,.07);
+}
+
+.app-icon{
+    width:44px;
+    height:44px;
+    margin-bottom:9px;
+    border-radius:13px;
+}
+
+.app-icon.star-icon{
+    background-color:#000;
+    background-image:url("nsst-logo.jpg");
+    background-repeat:no-repeat;
+    background-size:178%;
+    background-position:50% 19%;
+    box-shadow:0 0 24px rgba(34,204,222,.2);
+}
+
+.app-icon.gigos-icon{
+    display:grid;
+    place-items:center;
+    color:#20120e;
+    background:linear-gradient(135deg,#ffbd4a,#ff7f2a);
+    font-size:1.45rem;
+    font-weight:900;
+    box-shadow:0 0 22px rgba(255,139,31,.2);
+}
+
+.app-tile strong{
+    display:block;
+    line-height:1.15;
+    margin-bottom:5px;
+    font-size:.85rem;
+}
+
+.app-tile span{
+    display:block;
+    color:rgba(255,255,255,.7);
+    font-size:.62rem;
+    line-height:1.4;
+}
+
+.phone-status{
+    margin-top:2px;
+    color:#d9fbff;
+    font-size:.55rem;
+    font-weight:900;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+}
+
+.logbook-mockup{
+    position:relative;
+    width:172px;
+    aspect-ratio:.72/1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:18px 14px;
+    border-radius:14px 18px 18px 14px;
+    color:white;
+    text-align:center;
+    background:
+        radial-gradient(circle at 75% 18%,rgba(34,204,222,.2),transparent 30%),
+        radial-gradient(circle at 18% 82%,rgba(143,64,237,.24),transparent 34%),
+        linear-gradient(160deg,#060a18,#0b1d32);
+    border:1px solid rgba(34,204,222,.26);
+    box-shadow:0 24px 60px rgba(0,0,0,.38),10px 8px 0 rgba(242,238,224,.8);
+    transform:translateY(22px) rotate(-5deg);
+}
+
+.logbook-mockup:before{
+    content:"";
+    position:absolute;
+    left:-12px;
+    top:0;
+    width:18px;
+    height:100%;
+    border-radius:14px 0 0 14px;
+    background:linear-gradient(90deg,#11172b,#283354);
+}
+
+.logbook-mockup .concept-logo{
+    width:58px;
+    height:58px;
+    margin-bottom:20px;
     border-radius:16px;
     background-color:#000;
     background-image:url("nsst-logo.jpg");
@@ -473,26 +582,24 @@ h1{
     box-shadow:0 0 24px rgba(34,204,222,.2);
 }
 
-.concept-card strong{
-    display:block;
-    line-height:1.15;
-    margin-bottom:6px;
-}
-
-.concept-card span{
-    display:block;
-    color:rgba(255,255,255,.7);
-    font-size:.75rem;
-    line-height:1.4;
-}
-
-.concept-status{
-    margin-top:10px;
-    color:#d9fbff !important;
-    font-size:.65rem !important;
+.logbook-kicker{
+    color:#d9fbff;
+    font-size:.52rem;
     font-weight:900;
-    letter-spacing:.08em;
+    letter-spacing:.1em;
     text-transform:uppercase;
+}
+
+.logbook-mockup strong{
+    margin:14px 0 10px;
+    font-size:1rem;
+    line-height:1.08;
+}
+
+.logbook-mockup span{
+    color:rgba(255,255,255,.65);
+    font-size:.62rem;
+    line-height:1.45;
 }
 
 .section{
@@ -1216,7 +1323,7 @@ footer{
         min-height:450px;
     }
 
-    .concept-stack{
+    .product-mockups{
         right:0;
     }
 }
@@ -1303,19 +1410,24 @@ footer{
         transform:rotate(-4deg);
     }
 
-    .concept-stack{
+    .product-mockups{
         position:relative;
         right:auto;
         width:100%;
+        display:grid;
         grid-template-columns:repeat(2,minmax(0,1fr));
+        align-items:end;
     }
 
-    .concept-card{
-        min-height:158px;
+    .phone-mockup,
+    .logbook-mockup{
+        width:100%;
+        max-width:210px;
+        justify-self:center;
     }
 
-    .concept-card:first-child,
-    .concept-card:last-child{
+    .phone-mockup,
+    .logbook-mockup{
         transform:none;
     }
 
@@ -1403,18 +1515,28 @@ footer{
                             </div>
                         </div>
                     </div>
-                    <div class="concept-stack" aria-label="Products in development">
-                        <div class="concept-card">
-                            <div class="concept-logo" aria-hidden="true"></div>
-                            <strong>STAR App</strong>
-                            <span>Human-centered support, communication, tracking, and reflection.</span>
-                            <span class="concept-status">In development</span>
+                    <div class="product-mockups" aria-label="Products in development">
+                        <div class="phone-mockup" aria-label="STAR and GigOS app preview">
+                            <div class="phone-screen">
+                                <span class="phone-title">North Star Apps</span>
+                                <div class="app-tile">
+                                    <div class="app-icon star-icon" aria-hidden="true"></div>
+                                    <strong>STAR App</strong>
+                                    <span>Support, communication, tracking, and reflection.</span>
+                                </div>
+                                <div class="app-tile gigos-app">
+                                    <div class="app-icon gigos-icon" aria-hidden="true">♪</div>
+                                    <strong>GigOS App</strong>
+                                    <span>Booking, contracts, outreach, and gig planning.</span>
+                                </div>
+                                <span class="phone-status">Apps in development</span>
+                            </div>
                         </div>
-                        <div class="concept-card">
+                        <div class="logbook-mockup">
                             <div class="concept-logo" aria-hidden="true"></div>
+                            <span class="logbook-kicker">North Star Resource</span>
                             <strong>Person-Centered Planning Log Book</strong>
-                            <span>A planning and documentation resource for parents and caregivers.</span>
-                            <span class="concept-status">Working concept</span>
+                            <span>Planning and documentation for parents and caregivers.</span>
                         </div>
                     </div>
                 </div>
