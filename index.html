@@ -1267,6 +1267,15 @@ textarea:focus{
     font-weight:700;
 }
 
+.resource-downloads{
+    display:none;
+    gap:10px;
+}
+
+.resource-downloads.is-visible{
+    display:grid;
+}
+
 footer{
     color:rgba(255,255,255,.64);
     background:#101827;
@@ -1476,7 +1485,8 @@ footer{
                         Software platforms, operational tools, educational resources, workflow supports, digital products, and practical solution ecosystems designed to address meaningful everyday problems across diverse professions, industries, communities, and lived experiences.
                     </p>
                     <div class="actions">
-                        <a href="/pdfs/GigOS_Performance_Agreement_Fillable.pdf" class="btn" aria-label="Download the free GigOS Performance Agreement" title="Download the free GigOS Performance Agreement">Get Free Performance Agreement</a>
+                        <a href="#waitlist" class="btn resource-cta" data-resource="GigOS Performance Agreement" aria-label="Join the mailing list to get the free GigOS Performance Agreement" title="Join the mailing list to get the free GigOS Performance Agreement">Get Free Performance Agreement</a>
+                        <a href="#waitlist" class="btn resource-cta" data-resource="GigOS Pricing Worksheet" aria-label="Join the mailing list to get the free GigOS Pricing Worksheet" title="Join the mailing list to get the free GigOS Pricing Worksheet">Get Free Pricing Worksheet</a>
                         <a href="#products" class="btn secondary">Explore Products</a>
                         <a href="#star" class="btn star-action">⭐ STAR App — Coming Soon</a>
                     </div>
@@ -1615,6 +1625,7 @@ footer{
 
                     <ul class="feature-list">
                         <li>Performance Agreement Template</li>
+                        <li>Pricing Worksheet</li>
                         <li>Outreach Templates</li>
                         <li>Workbook Collection</li>
                         <li>Booking Tools</li>
@@ -1623,7 +1634,8 @@ footer{
 
                     <div class="action-grid">
                         <a href="#waitlist" class="btn app-btn">Join GigOS App Waitlist</a>
-                        <a href="/pdfs/GigOS_Performance_Agreement_Fillable.pdf" class="btn" aria-label="Download the free GigOS Performance Agreement" title="Download the free GigOS Performance Agreement">Get Free Performance Agreement</a>
+                        <a href="#waitlist" class="btn resource-cta" data-resource="GigOS Performance Agreement" aria-label="Join the mailing list to get the free GigOS Performance Agreement" title="Join the mailing list to get the free GigOS Performance Agreement">Get Free Performance Agreement</a>
+                        <a href="#waitlist" class="btn resource-cta" data-resource="GigOS Pricing Worksheet" aria-label="Join the mailing list to get the free GigOS Pricing Worksheet" title="Join the mailing list to get the free GigOS Pricing Worksheet">Get Free Pricing Worksheet</a>
                         <a href="https://a.co/d/070O4UgT" class="btn secondary" target="_blank" rel="noopener">Explore GigOS Workbooks on Amazon</a>
                     </div>
                 </article>
@@ -1663,13 +1675,13 @@ footer{
         <div class="container">
             <div class="waitlist-panel" id="waitlist">
                 <div>
-                    <span class="eyebrow">Resources coming soon</span>
-                    <h2>Help Shape What We Build Next</h2>
+                    <span class="eyebrow">Free GigOS resources</span>
+                    <h2>Join the North Star Mailing List</h2>
                     <p>
                         North Star Solutions Tech is creating practical tools, workbooks, apps, and resources for more industries, professions, and communities.
                     </p>
                     <p class="small">
-                        Tell us what would make your work or daily life easier, and join the waitlist for GigOS, STAR, and future releases.
+                        Tell us what would make your work or daily life easier, and get free GigOS resources for your music business toolkit.
                     </p>
                 </div>
 
@@ -1687,8 +1699,12 @@ footer{
                     <input type="text" name="desired-resource" placeholder="What product, tool, or resource would you like to see?">
                     <input type="text" name="audience" placeholder="What industry, profession, or community should it support?">
                     <textarea name="notes" placeholder="Anything else you would like us to know?"></textarea>
-                    <button class="btn" type="submit">Join Waitlist</button>
+                    <button class="btn" type="submit">Join Mailing List</button>
                     <p class="form-status" role="status" aria-live="polite"></p>
+                    <div class="resource-downloads" id="resource-downloads" aria-live="polite">
+                        <a href="/pdfs/GigOS_Performance_Agreement_Fillable.pdf" class="btn" data-download-resource="GigOS Performance Agreement" aria-label="Download the free GigOS Performance Agreement" title="Download the free GigOS Performance Agreement">Download Performance Agreement</a>
+                        <a href="/pdfs/GigOS_Pricing_Worksheet_Fillable.pdf" class="btn" data-download-resource="GigOS Pricing Worksheet" aria-label="Download the free GigOS Pricing Worksheet" title="Download the free GigOS Pricing Worksheet">Download Pricing Worksheet</a>
+                    </div>
                 </form>
             </div>
         </div>
@@ -1700,7 +1716,22 @@ footer{
 </footer>
 <script>
 const waitlistForm = document.querySelector("#waitlist-form");
+const resourceCtas = document.querySelectorAll(".resource-cta");
+const resourceDownloads = document.querySelector("#resource-downloads");
 const waitlistEndpoint = "https://script.google.com/macros/s/AKfycbwtAnoNuTTGFYoz13dDkp6Ss7ZluOcy88wbUKa9y23-xD45knhBUSKGzgAdr58QRvvgiw/exec";
+
+resourceCtas.forEach((cta) => {
+    cta.addEventListener("click", () => {
+        const desiredResource = waitlistForm.querySelector('[name="desired-resource"]');
+        const workbookInterest = waitlistForm.querySelector('[name="interest"][value="Workbook Resources"]');
+        const gigosInterest = waitlistForm.querySelector('[name="interest"][value="GigOS App"]');
+
+        desiredResource.value = cta.dataset.resource;
+        workbookInterest.checked = true;
+        gigosInterest.checked = true;
+        resourceDownloads.classList.remove("is-visible");
+    });
+});
 
 waitlistForm.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -1742,13 +1773,17 @@ waitlistForm.addEventListener("submit", async (event) => {
             body: JSON.stringify(payload)
         });
 
-        statusMessage.textContent = "Thanks for joining the North Star waitlist! ✨ We’ll keep you posted.";
+        statusMessage.textContent = "Thanks for joining the North Star list. Your free GigOS resource is ready below.";
+        resourceDownloads.classList.add("is-visible");
+        resourceDownloads.querySelectorAll("[data-download-resource]").forEach((download) => {
+            download.hidden = Boolean(desiredResource) && download.dataset.downloadResource !== desiredResource;
+        });
         waitlistForm.reset();
     } catch (error) {
         statusMessage.textContent = "Something went wrong. Please try again.";
     } finally {
         submitButton.disabled = false;
-        submitButton.textContent = "Join Waitlist";
+        submitButton.textContent = "Join Mailing List";
     }
 });
 </script>
