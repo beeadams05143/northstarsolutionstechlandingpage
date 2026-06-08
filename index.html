@@ -1267,6 +1267,25 @@ textarea:focus{
     font-weight:700;
 }
 
+.resource-note{
+    display:grid;
+    gap:8px;
+    padding:16px;
+    border-radius:16px;
+    color:#e8f7ff;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(34,204,222,.22);
+    font-size:.92rem;
+}
+
+.resource-note strong{
+    color:#fff4d8;
+}
+
+.resource-note p{
+    margin:0;
+}
+
 .resource-downloads{
     display:none;
     gap:10px;
@@ -1277,6 +1296,50 @@ textarea:focus{
 }
 
 .resource-options{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:18px;
+}
+
+.resource-modal{
+    position:fixed;
+    inset:0;
+    z-index:20;
+    display:grid;
+    place-items:center;
+    padding:24px;
+    background:rgba(2,4,10,.68);
+    backdrop-filter:blur(8px);
+}
+
+.resource-modal[hidden]{
+    display:none;
+}
+
+.resource-modal-panel{
+    width:min(560px,100%);
+    border-radius:20px;
+    padding:28px;
+    color:#172235;
+    background:#fffaf0;
+    border:1px solid rgba(16,24,39,.12);
+    box-shadow:0 28px 80px rgba(2,4,10,.32);
+}
+
+.resource-modal-panel h2{
+    margin:0 0 12px;
+    font-size:clamp(1.55rem,3vw,2.1rem);
+    line-height:1.12;
+}
+
+.resource-modal-panel p{
+    margin:0 0 12px;
+    color:#3d4656;
+    font-weight:600;
+}
+
+.resource-modal-actions{
     display:flex;
     flex-wrap:wrap;
     gap:10px;
@@ -1716,6 +1779,11 @@ footer{
                     <button class="btn" type="submit">Join Mailing List</button>
                     <p class="form-status" role="status" aria-live="polite"></p>
                     <div class="resource-downloads" id="resource-downloads" aria-live="polite">
+                        <div class="resource-note">
+                            <p><strong>Your free GigOS PDF is fillable.</strong> Open it on your phone, tablet, or computer, type into the fields, then save/download it or print it.</p>
+                            <p>Prefer paper? Download it, print it blank, and fill it in by hand.</p>
+                            <p><strong>Logo note:</strong> the band name field is fillable. The logo box is a placeholder in this version; add a logo with your PDF editor if it supports images, or print and add it by hand.</p>
+                        </div>
                         <a href="/pdfs/GigOS_Performance_Agreement_Fillable.pdf" class="btn" data-download-resource="GigOS Performance Agreement" aria-label="Download the free GigOS Performance Agreement" title="Download the free GigOS Performance Agreement">Download Performance Agreement</a>
                         <a href="/pdfs/GigOS_Pricing_Worksheet_Fillable.pdf" class="btn" data-download-resource="GigOS Pricing Worksheet" aria-label="Download the free GigOS Pricing Worksheet" title="Download the free GigOS Pricing Worksheet">Download Pricing Worksheet</a>
                     </div>
@@ -1725,6 +1793,19 @@ footer{
     </section>
 </main>
 
+<div class="resource-modal" id="resource-modal" role="dialog" aria-modal="true" aria-labelledby="resource-modal-title" hidden>
+    <div class="resource-modal-panel">
+        <h2 id="resource-modal-title">Your fillable PDF is ready</h2>
+        <p>Open it on your device, type into the fields, then save/download it or print it.</p>
+        <p>You can also download and print a blank copy if you prefer filling it out by hand.</p>
+        <p>The band name field is fillable. The logo box is a placeholder in this version; add a logo with your PDF editor if it supports images, or print and add it by hand.</p>
+        <div class="resource-modal-actions">
+            <button class="btn" type="button" id="resource-modal-close">Got it</button>
+            <a href="#resource-downloads" class="btn" id="resource-modal-download">Go to download</a>
+        </div>
+    </div>
+</div>
+
 <footer>
     North Star Solutions Tech © 2026
 </footer>
@@ -1732,6 +1813,9 @@ footer{
 const waitlistForm = document.querySelector("#waitlist-form");
 const resourceCtas = document.querySelectorAll(".resource-cta");
 const resourceDownloads = document.querySelector("#resource-downloads");
+const resourceModal = document.querySelector("#resource-modal");
+const resourceModalClose = document.querySelector("#resource-modal-close");
+const resourceModalDownload = document.querySelector("#resource-modal-download");
 const waitlistEndpoint = "https://script.google.com/macros/s/AKfycbwtAnoNuTTGFYoz13dDkp6Ss7ZluOcy88wbUKa9y23-xD45knhBUSKGzgAdr58QRvvgiw/exec";
 
 resourceCtas.forEach((cta) => {
@@ -1745,6 +1829,23 @@ resourceCtas.forEach((cta) => {
         gigosInterest.checked = true;
         resourceDownloads.classList.remove("is-visible");
     });
+});
+
+function closeResourceModal(){
+    resourceModal.hidden = true;
+}
+
+resourceModalClose.addEventListener("click", closeResourceModal);
+resourceModalDownload.addEventListener("click", closeResourceModal);
+resourceModal.addEventListener("click", (event) => {
+    if (event.target === resourceModal) {
+        closeResourceModal();
+    }
+});
+document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !resourceModal.hidden) {
+        closeResourceModal();
+    }
 });
 
 waitlistForm.addEventListener("submit", async (event) => {
@@ -1792,6 +1893,8 @@ waitlistForm.addEventListener("submit", async (event) => {
         resourceDownloads.querySelectorAll("[data-download-resource]").forEach((download) => {
             download.hidden = Boolean(desiredResource) && download.dataset.downloadResource !== desiredResource;
         });
+        resourceModal.hidden = false;
+        resourceModalClose.focus();
         waitlistForm.reset();
     } catch (error) {
         statusMessage.textContent = "Something went wrong. Please try again.";
