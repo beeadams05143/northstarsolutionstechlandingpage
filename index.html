@@ -1302,50 +1302,6 @@ textarea:focus{
     margin-top:18px;
 }
 
-.resource-modal{
-    position:fixed;
-    inset:0;
-    z-index:20;
-    display:grid;
-    place-items:center;
-    padding:24px;
-    background:rgba(2,4,10,.68);
-    backdrop-filter:blur(8px);
-}
-
-.resource-modal[hidden]{
-    display:none;
-}
-
-.resource-modal-panel{
-    width:min(560px,100%);
-    border-radius:20px;
-    padding:28px;
-    color:#172235;
-    background:#fffaf0;
-    border:1px solid rgba(16,24,39,.12);
-    box-shadow:0 28px 80px rgba(2,4,10,.32);
-}
-
-.resource-modal-panel h2{
-    margin:0 0 12px;
-    font-size:clamp(1.55rem,3vw,2.1rem);
-    line-height:1.12;
-}
-
-.resource-modal-panel p{
-    margin:0 0 12px;
-    color:#3d4656;
-    font-weight:600;
-}
-
-.resource-modal-actions{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-    margin-top:18px;
-}
-
 footer{
     color:rgba(255,255,255,.64);
     background:#101827;
@@ -1780,10 +1736,8 @@ footer{
                     <p class="form-status" role="status" aria-live="polite"></p>
                     <div class="resource-downloads" id="resource-downloads" aria-live="polite">
                         <div class="resource-note">
-                            <p><strong>Your free GigOS PDF is fillable.</strong> On a computer, open it and type into the fields. On a phone, download it first, then open it in Adobe Acrobat, Files, or another PDF app that supports forms.</p>
-                            <p><strong>Phone note:</strong> browser previews may show the PDF without editable fields. Use your phone's Share or Open In option if the fields do not respond.</p>
-                            <p>Prefer paper? Download it, print it blank, and fill it in by hand.</p>
-                            <p><strong>Logo note:</strong> the band name field is fillable. The logo box is a placeholder in this version; add a logo with your PDF editor if it supports images, or print and add it by hand.</p>
+                            <p><strong>Your free GigOS PDF is fillable.</strong> On a phone, download it first, then open it in Adobe Acrobat, Files, or another PDF app that supports forms.</p>
+                            <p>If your browser preview will not let you type, use Share or Open In to move the PDF to your PDF app. You can also print a blank copy.</p>
                         </div>
                         <a href="/pdfs/GigOS_Performance_Agreement_Fillable.pdf" class="btn" data-download-resource="GigOS Performance Agreement" aria-label="Download the fillable GigOS Performance Agreement PDF, then open it in a PDF app that supports forms" title="Download the fillable GigOS Performance Agreement PDF, then open it in a PDF app that supports forms" download>Download Fillable Performance Agreement PDF</a>
                         <a href="/pdfs/GigOS_Pricing_Worksheet_Fillable.pdf" class="btn" data-download-resource="GigOS Pricing Worksheet" aria-label="Download the fillable GigOS Pricing Worksheet PDF, then open it in a PDF app that supports forms" title="Download the fillable GigOS Pricing Worksheet PDF, then open it in a PDF app that supports forms" download>Download Fillable Pricing Worksheet PDF</a>
@@ -1794,20 +1748,6 @@ footer{
     </section>
 </main>
 
-<div class="resource-modal" id="resource-modal" role="dialog" aria-modal="true" aria-labelledby="resource-modal-title" hidden>
-    <div class="resource-modal-panel">
-        <h2 id="resource-modal-title">Your fillable PDF is ready</h2>
-        <p>On a phone, download the PDF first, then open it in Adobe Acrobat, Files, or another PDF app that supports forms.</p>
-        <p>If the PDF opens in a browser preview and the fields do not respond, use Share or Open In to move it to your PDF app.</p>
-        <p>You can also download and print a blank copy if you prefer filling it out by hand.</p>
-        <p>The band name field is fillable. The logo box is a placeholder in this version; add a logo with your PDF editor if it supports images, or print and add it by hand.</p>
-        <div class="resource-modal-actions">
-            <button class="btn" type="button" id="resource-modal-close">Got it</button>
-            <a href="#resource-downloads" class="btn" id="resource-modal-download">Go to download</a>
-        </div>
-    </div>
-</div>
-
 <footer>
     North Star Solutions Tech © 2026
 </footer>
@@ -1815,9 +1755,6 @@ footer{
 const waitlistForm = document.querySelector("#waitlist-form");
 const resourceCtas = document.querySelectorAll(".resource-cta");
 const resourceDownloads = document.querySelector("#resource-downloads");
-const resourceModal = document.querySelector("#resource-modal");
-const resourceModalClose = document.querySelector("#resource-modal-close");
-const resourceModalDownload = document.querySelector("#resource-modal-download");
 const waitlistEndpoint = "https://script.google.com/macros/s/AKfycbwtAnoNuTTGFYoz13dDkp6Ss7ZluOcy88wbUKa9y23-xD45knhBUSKGzgAdr58QRvvgiw/exec";
 
 resourceCtas.forEach((cta) => {
@@ -1831,23 +1768,6 @@ resourceCtas.forEach((cta) => {
         gigosInterest.checked = true;
         resourceDownloads.classList.remove("is-visible");
     });
-});
-
-function closeResourceModal(){
-    resourceModal.hidden = true;
-}
-
-resourceModalClose.addEventListener("click", closeResourceModal);
-resourceModalDownload.addEventListener("click", closeResourceModal);
-resourceModal.addEventListener("click", (event) => {
-    if (event.target === resourceModal) {
-        closeResourceModal();
-    }
-});
-document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && !resourceModal.hidden) {
-        closeResourceModal();
-    }
 });
 
 waitlistForm.addEventListener("submit", async (event) => {
@@ -1895,8 +1815,7 @@ waitlistForm.addEventListener("submit", async (event) => {
         resourceDownloads.querySelectorAll("[data-download-resource]").forEach((download) => {
             download.hidden = Boolean(desiredResource) && download.dataset.downloadResource !== desiredResource;
         });
-        resourceModal.hidden = false;
-        resourceModalClose.focus();
+        resourceDownloads.scrollIntoView({ behavior: "smooth", block: "center" });
         waitlistForm.reset();
     } catch (error) {
         statusMessage.textContent = "Something went wrong. Please try again.";
