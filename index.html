@@ -303,15 +303,47 @@ h1{
     position:relative;
     z-index:2;
     width:min(330px,68vw);
-    aspect-ratio:.72/1;
+    aspect-ratio:2/3;
     border-radius:22px;
-    padding:30px;
-    background:
-        linear-gradient(180deg,rgba(255,255,255,.045),transparent 18%),
-        linear-gradient(180deg,#20120e 0%,#1a100d 54%,#3a2114 100%);
+    background:#111;
     box-shadow:0 34px 90px rgba(0,0,0,.42), inset 0 0 0 1px rgba(255,228,188,.12);
     transform:rotate(-4deg);
     animation:floatBook 7s ease-in-out infinite;
+    overflow:visible;
+}
+
+.book-stack{
+    position:relative;
+    z-index:2;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:min(560px,88vw);
+    min-height:500px;
+}
+
+.book-stack .workbook{
+    flex:0 0 min(285px,44vw);
+    width:min(285px,44vw);
+    animation:none;
+}
+
+.book-stack .workbook:first-child{
+    transform:rotate(-7deg) translateX(36px) translateY(20px);
+    z-index:1;
+}
+
+.book-stack .workbook:last-child{
+    transform:rotate(5deg) translateX(-36px) translateY(-16px);
+    z-index:2;
+}
+
+.book-stack .workbook:first-child:after{
+    transform:skewY(-4deg);
+}
+
+.book-stack .workbook:last-child:after{
+    transform:skewY(4deg);
 }
 
 .workbook:before{
@@ -339,11 +371,20 @@ h1{
 .cover-front{
     position:relative;
     z-index:2;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    text-align:center;
+    display:block;
+    width:100%;
     height:100%;
+    border-radius:inherit;
+    overflow:hidden;
+}
+
+.book-cover-image{
+    display:block;
+    width:100%;
+    height:100%;
+    border-radius:inherit;
+    object-fit:cover;
+    box-shadow:inset 0 0 0 1px rgba(255,228,188,.12);
 }
 
 .cover-kicker{
@@ -711,13 +752,28 @@ h1{
 
 .product-card.gigos{
     background:
-        radial-gradient(circle at 8% 12%,rgba(143,64,237,.2),transparent 25%),
-        radial-gradient(circle at 92% 15%,rgba(34,204,222,.14),transparent 25%),
-        radial-gradient(circle at 80% 22%,rgba(255,139,31,.2),transparent 28%),
-        radial-gradient(circle at 18% 88%,rgba(255,189,74,.12),transparent 30%),
-        linear-gradient(145deg,#171322 0%,#28160f 48%,#3a2114 78%,#13243a 100%);
-    border-color:rgba(126,189,204,.24);
-    box-shadow:0 22px 70px rgba(2,4,10,.28),0 0 34px rgba(34,204,222,.08);
+        radial-gradient(circle at 12% 14%,rgba(143,64,237,.26),transparent 30%),
+        radial-gradient(circle at 82% 18%,rgba(34,204,222,.24),transparent 28%),
+        radial-gradient(circle at 52% 90%,rgba(43,117,226,.22),transparent 34%),
+        linear-gradient(145deg,#02040a 0%,#081225 50%,#061827 100%);
+    border-color:rgba(34,204,222,.22);
+    box-shadow:0 22px 70px rgba(2,4,10,.3),0 0 38px rgba(34,204,222,.1);
+}
+
+.product-card.gigos:after{
+    content:"";
+    position:absolute;
+    inset:0;
+    opacity:.5;
+    background-image:
+        radial-gradient(circle,rgba(255,255,255,.82) 1px,transparent 1.5px),
+        radial-gradient(circle,rgba(34,204,222,.72) 1px,transparent 1.7px),
+        radial-gradient(circle,rgba(143,64,237,.68) 1px,transparent 1.8px);
+    background-size:82px 82px,136px 136px,188px 188px;
+    background-position:0 0,34px 22px,80px 44px;
+    mask-image:linear-gradient(to bottom,rgba(0,0,0,.8),transparent 82%);
+    z-index:0;
+    pointer-events:none;
 }
 
 .product-card.star{
@@ -736,7 +792,13 @@ h1{
     inset:auto -20% -42% -20%;
     height:52%;
     background:radial-gradient(ellipse at center,rgba(255,255,255,.14),transparent 66%);
+    z-index:0;
     pointer-events:none;
+}
+
+.product-card > *{
+    position:relative;
+    z-index:1;
 }
 
 .product-top{
@@ -794,6 +856,12 @@ h1{
     border-color:rgba(34,204,222,.24);
 }
 
+.gigos .pill{
+    color:#d9fbff;
+    background:rgba(34,204,222,.12);
+    border-color:rgba(34,204,222,.24);
+}
+
 .product-card h3{
     position:relative;
     font-size:clamp(1.8rem,3.3vw,2.65rem);
@@ -844,11 +912,11 @@ h1{
     margin:24px 0;
     padding:18px;
     border-radius:20px;
-    color:#fff6df;
+    color:#e8f7ff;
     background:
-        radial-gradient(circle at 90% 10%,rgba(255,189,74,.18),transparent 30%),
+        radial-gradient(circle at 90% 10%,rgba(34,204,222,.18),transparent 30%),
         rgba(255,255,255,.08);
-    border:1px solid rgba(255,189,74,.22);
+    border:1px solid rgba(34,204,222,.24);
     box-shadow:inset 0 0 0 1px rgba(255,255,255,.04);
 }
 
@@ -860,7 +928,7 @@ h1{
 
 .gigos-app-callout span{
     display:block;
-    color:rgba(255,246,223,.72);
+    color:rgba(232,247,255,.72);
     font-size:.95rem;
 }
 
@@ -874,16 +942,16 @@ h1{
 .gigos-workbook-note div{
     border-radius:18px;
     padding:15px;
-    color:rgba(255,246,223,.8);
+    color:rgba(232,247,255,.8);
     background:rgba(255,255,255,.07);
-    border:1px solid rgba(255,189,74,.18);
+    border:1px solid rgba(34,204,222,.2);
     font-size:.84rem;
 }
 
 .gigos-workbook-note strong{
     display:block;
     margin-bottom:4px;
-    color:#fff6df;
+    color:#f4fbff;
     font-size:.92rem;
 }
 
@@ -982,15 +1050,39 @@ h1{
 }
 
 .gigos .btn.app-btn{
-    color:#20120e;
-    background:linear-gradient(135deg,#ffbd4a,#ff7f2a);
-    box-shadow:0 18px 34px rgba(255,139,31,.22);
+    color:#04131f;
+    background:linear-gradient(135deg,#7ee9f5,#7aa7d9);
+    box-shadow:0 18px 34px rgba(34,204,222,.2);
 }
 
 .product-workbook-cover{
     max-width:220px;
     margin:0 auto 30px;
     transform:rotate(-2deg);
+}
+
+.product-book-pair{
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:min(520px,100%);
+    margin:8px auto 32px;
+    min-height:330px;
+}
+
+.product-book-pair .product-workbook-cover{
+    flex:0 0 min(210px,42%);
+    max-width:210px;
+    margin:0;
+}
+
+.product-book-pair .product-workbook-cover:first-child{
+    transform:rotate(-6deg) translateX(28px) translateY(14px);
+}
+
+.product-book-pair .product-workbook-cover:last-child{
+    transform:rotate(5deg) translateX(-28px) translateY(-10px);
 }
 
 .resource-card{
@@ -1017,19 +1109,16 @@ h1{
 
 .workbook-mini-cover{
     position:relative;
-    aspect-ratio:.72/1;
+    aspect-ratio:2/3;
     max-width:300px;
     width:100%;
     justify-self:center;
     border-radius:18px;
-    background:
-        linear-gradient(180deg,rgba(255,255,255,.05),transparent 18%),
-        linear-gradient(180deg,#20120e 0%,#1a100d 54%,#3a2114 100%);
+    background:#111;
     box-shadow:0 24px 60px rgba(0,0,0,.28), inset 0 0 0 1px rgba(255,228,188,.12);
     overflow:visible;
     display:block;
     text-align:center;
-    padding:24px;
 }
 
 .workbook-mini-cover:before{
@@ -1362,6 +1451,19 @@ footer{
     .hero-visual{
         min-height:720px;
     }
+
+    .book-stack{
+        min-height:450px;
+    }
+
+    .book-stack .workbook{
+        flex-basis:min(255px,42vw);
+        width:min(255px,42vw);
+    }
+
+    .product-book-pair{
+        min-height:300px;
+    }
 }
 
 @media (max-width:620px){
@@ -1440,6 +1542,24 @@ footer{
         padding-top:18px;
     }
 
+    .book-stack{
+        width:100%;
+        min-height:340px;
+    }
+
+    .book-stack .workbook{
+        flex-basis:min(188px,46vw);
+        width:min(188px,46vw);
+    }
+
+    .book-stack .workbook:first-child{
+        transform:rotate(-7deg) translateX(22px) translateY(16px);
+    }
+
+    .book-stack .workbook:last-child{
+        transform:rotate(5deg) translateX(-22px) translateY(-10px);
+    }
+
     .workbook{
         width:min(300px,76vw);
         margin-left:0;
@@ -1469,6 +1589,24 @@ footer{
 
     .gigos-workbook-note{
         grid-template-columns:1fr;
+    }
+
+    .product-book-pair{
+        min-height:245px;
+        margin-bottom:24px;
+    }
+
+    .product-book-pair .product-workbook-cover{
+        flex-basis:min(160px,44%);
+        max-width:160px;
+    }
+
+    .product-book-pair .product-workbook-cover:first-child{
+        transform:rotate(-6deg) translateX(18px) translateY(10px);
+    }
+
+    .product-book-pair .product-workbook-cover:last-child{
+        transform:rotate(5deg) translateX(-18px) translateY(-8px);
     }
 
     .action-grid,
@@ -1520,35 +1658,15 @@ footer{
 
                 <div class="hero-visual" aria-label="North Star product previews">
                     <div class="glow-orbit"></div>
-                    <div class="workbook">
-                        <div class="cover-front">
-                            <div class="cover-kicker">▲ Independent Musician System ▲</div>
-                            <svg class="cover-slider" viewBox="0 0 180 78" role="img" aria-label="GigOS slider logo">
-                                <defs>
-                                    <linearGradient id="coverSliderGradient" x1="0" y1="0" x2="1" y2="0">
-                                        <stop offset="0" stop-color="#f0642f"></stop>
-                                        <stop offset=".5" stop-color="#ff8b1f"></stop>
-                                        <stop offset="1" stop-color="#ffbd4a"></stop>
-                                    </linearGradient>
-                                </defs>
-                                <rect class="slider-track" x="24" y="10" width="132" height="8" rx="4"></rect>
-                                <circle class="slider-knob" cx="78" cy="14" r="13"></circle>
-                                <rect class="slider-track" x="24" y="35" width="132" height="8" rx="4"></rect>
-                                <circle class="slider-knob" cx="111" cy="39" r="13"></circle>
-                                <rect class="slider-track" x="24" y="60" width="132" height="8" rx="4"></rect>
-                                <circle class="slider-knob" cx="92" cy="64" r="13"></circle>
-                            </svg>
-                            <h2 class="cover-title">GigOS<sup>TM</sup></h2>
-                            <div class="cover-rule" aria-hidden="true"></div>
-                            <p class="cover-subtitle">The Operating System for Booking More Shows</p>
-                            <div class="cover-meta">Workbook · Planner · Performance System</div>
-                            <div class="cover-list" aria-label="GigOS workbook modules">
-                                <span>01 Venue Finder</span>
-                                <span>02 Brand Builder</span>
-                                <span>03 Audience Resonance</span>
-                                <span>04 Named Set Builder</span>
-                                <span>05 Energy Mapping</span>
-                                <span>06 Show Flow Planner</span>
+                    <div class="book-stack" aria-label="GigOS workbook covers">
+                        <div class="workbook">
+                            <div class="cover-front">
+                                <img class="book-cover-image" src="How Working Bands Work Cover copy.jpg" alt="How Working Bands Work book cover">
+                            </div>
+                        </div>
+                        <div class="workbook">
+                            <div class="cover-front">
+                                <img class="book-cover-image" src="GIgOS Worbook NEW COVER copy.jpg" alt="GigOS workbook book cover">
                             </div>
                         </div>
                     </div>
@@ -1603,28 +1721,15 @@ footer{
                         <div class="icon-bubble">♪</div>
                         <span class="pill">For independent musicians</span>
                     </div>
-                    <div class="workbook-mini-cover product-workbook-cover" aria-hidden="true">
-                        <div class="cover-front">
-                            <div class="cover-kicker">▲ Independent Musician System ▲</div>
-                            <svg class="cover-slider" viewBox="0 0 180 78" role="img" aria-label="GigOS slider logo">
-                                <rect class="slider-track" x="24" y="10" width="132" height="8" rx="4"></rect>
-                                <circle class="slider-knob" cx="78" cy="14" r="13"></circle>
-                                <rect class="slider-track" x="24" y="35" width="132" height="8" rx="4"></rect>
-                                <circle class="slider-knob" cx="111" cy="39" r="13"></circle>
-                                <rect class="slider-track" x="24" y="60" width="132" height="8" rx="4"></rect>
-                                <circle class="slider-knob" cx="92" cy="64" r="13"></circle>
-                            </svg>
-                            <h2 class="cover-title">GigOS<sup>TM</sup></h2>
-                            <div class="cover-rule" aria-hidden="true"></div>
-                            <p class="cover-subtitle">The Operating System for Booking More Shows</p>
-                            <div class="cover-meta">Workbook · Planner · Performance System</div>
-                            <div class="cover-list" aria-label="GigOS workbook modules">
-                                <span>01 Venue Finder</span>
-                                <span>02 Brand Builder</span>
-                                <span>03 Audience Resonance</span>
-                                <span>04 Named Set Builder</span>
-                                <span>05 Energy Mapping</span>
-                                <span>06 Show Flow Planner</span>
+                    <div class="product-book-pair" aria-label="GigOS workbook covers">
+                        <div class="workbook-mini-cover product-workbook-cover">
+                            <div class="cover-front">
+                                <img class="book-cover-image" src="GIgOS Worbook NEW COVER copy.jpg" alt="GigOS workbook book cover">
+                            </div>
+                        </div>
+                        <div class="workbook-mini-cover product-workbook-cover">
+                            <div class="cover-front">
+                                <img class="book-cover-image" src="How Working Bands Work Cover copy.jpg" alt="How Working Bands Work book cover">
                             </div>
                         </div>
                     </div>
@@ -1639,8 +1744,8 @@ footer{
                             Available now on Amazon with field notes, systems, planners, and practical tools.
                         </div>
                         <div>
-                            <strong>Second GigOS Workbook</strong>
-                            A new workbook for independent musicians is currently in development.
+                            <strong>How Working Bands Work</strong>
+                            An inside look at the systems, decisions, and daily work behind a successful regional band.
                         </div>
                     </div>
 
