@@ -604,6 +604,25 @@ h1{
     transform:rotate(-5deg);
 }
 
+.logbook-mockup.cover-image{
+    padding:0;
+    overflow:hidden;
+    background:#fffaf0;
+    border-color:rgba(250,199,117,.34);
+    box-shadow:0 24px 60px rgba(0,0,0,.38),10px 8px 0 rgba(242,238,224,.8);
+}
+
+.logbook-mockup.cover-image:before{
+    display:none;
+}
+
+.logbook-cover-image{
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
 .logbook-mockup:before{
     content:"";
     position:absolute;
@@ -981,6 +1000,24 @@ h1{
     gap:9px 22px;
     padding-left:1.1rem;
     list-style:disc;
+}
+
+.star-logbook-cover{
+    width:min(260px,72%);
+    aspect-ratio:.67/1;
+    margin:4px auto 28px;
+    border-radius:8px;
+    overflow:hidden;
+    background:#fffaf0;
+    box-shadow:0 22px 48px rgba(0,0,0,.28),10px 10px 0 rgba(242,238,224,.82);
+    transform:rotate(-2deg);
+}
+
+.star-logbook-cover img{
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:cover;
 }
 
 .star .btn{
@@ -1652,7 +1689,7 @@ footer{
                         <a href="#waitlist" class="btn resource-cta" data-resource="GigOS Performance Agreement" aria-label="Join the mailing list to get the free GigOS Performance Agreement" title="Join the mailing list to get the free GigOS Performance Agreement">Get Free Performance Agreement</a>
                         <a href="#waitlist" class="btn resource-cta" data-resource="GigOS Pricing Worksheet" aria-label="Join the mailing list to get the free GigOS Pricing Worksheet" title="Join the mailing list to get the free GigOS Pricing Worksheet">Get Free Pricing Worksheet</a>
                         <a href="#products" class="btn secondary">Explore Products</a>
-                        <a href="#star" class="btn star-action">⭐ STAR App — Coming Soon</a>
+                        <a href="https://www.amazon.com/STAR-Daily-Caregiver-Log-Participation/dp/B0HF4XVGTD" class="btn star-action" target="_blank" rel="noopener">Buy STAR Caregiver Log Book</a>
                     </div>
                 </div>
 
@@ -1661,7 +1698,7 @@ footer{
                     <div class="book-stack" aria-label="GigOS workbook covers">
                         <div class="workbook">
                             <div class="cover-front">
-                                <img class="book-cover-image" src="How Working Bands Work Cover copy.jpg" alt="How Working Bands Work book cover">
+                                <img class="book-cover-image" src="cover.jpeg" alt="How Working Bands Work book cover">
                             </div>
                         </div>
                         <div class="workbook">
@@ -1696,12 +1733,9 @@ footer{
                                 <span class="phone-status">Apps in development</span>
                             </div>
                         </div>
-                        <div class="logbook-mockup">
-                            <div class="concept-logo" aria-hidden="true"></div>
-                            <span class="logbook-kicker">North Star Resource</span>
-                            <strong>Person-Centered Planning Log Book</strong>
-                            <span>Planning and documentation for parents and caregivers.</span>
-                        </div>
+                        <a class="logbook-mockup cover-image" href="https://www.amazon.com/STAR-Daily-Caregiver-Log-Participation/dp/B0HF4XVGTD" target="_blank" rel="noopener" aria-label="Buy STAR Daily Caregiver Log on Amazon">
+                            <img class="logbook-cover-image" src="caregiverlog1800.jpeg" alt="STAR Daily Caregiver Log cover">
+                        </a>
                     </div>
                 </div>
             </div>
@@ -1729,7 +1763,7 @@ footer{
                         </div>
                         <div class="workbook-mini-cover product-workbook-cover">
                             <div class="cover-front">
-                                <img class="book-cover-image" src="How Working Bands Work Cover copy.jpg" alt="How Working Bands Work book cover">
+                                <img class="book-cover-image" src="cover.jpeg" alt="How Working Bands Work book cover">
                             </div>
                         </div>
                     </div>
@@ -1779,6 +1813,9 @@ footer{
                         </div>
                         <span class="pill">Support platform</span>
                     </div>
+                    <div class="star-logbook-cover">
+                        <img src="caregiverlog1800.jpeg" alt="STAR Daily Caregiver Log cover">
+                    </div>
                     <h3>STAR App — Support That Stays Human</h3>
                     <p>
                         The STAR App is being built to support individuals, caregivers, families, and teams with tracking, reflection, communication, and daily support tools.
@@ -1793,6 +1830,7 @@ footer{
                     </ul>
 
                     <div class="action-grid">
+                        <a href="https://www.amazon.com/STAR-Daily-Caregiver-Log-Participation/dp/B0HF4XVGTD" class="btn" target="_blank" rel="noopener">Buy STAR Caregiver Log Book on Amazon</a>
                         <a href="STAR_CAREGIVER_CHECKIN_DEMO.pdf" class="btn" target="_blank" rel="noopener">Preview Caregiver Check-In Demo</a>
                         <a href="STAR_REPORTS_DEMO.pdf" class="btn secondary" target="_blank" rel="noopener">Preview Reports Demo</a>
                         <a href="#waitlist" class="btn secondary">Join STAR Waitlist</a>
