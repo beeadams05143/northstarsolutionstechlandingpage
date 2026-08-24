@@ -1053,6 +1053,123 @@ h1{
     text-align:center;
 }
 
+.preview-grid{
+    display:grid;
+    gap:28px;
+}
+
+.preview-group{
+    display:grid;
+    grid-template-columns:minmax(210px,.36fr) 1fr;
+    gap:28px;
+    align-items:start;
+    padding:30px 0;
+    border-top:1px solid var(--line);
+}
+
+.preview-group:first-child{
+    border-top:0;
+    padding-top:0;
+}
+
+.preview-copy h3{
+    font-size:clamp(1.45rem,2.8vw,2.3rem);
+    line-height:1.05;
+    margin-bottom:12px;
+}
+
+.preview-copy p{
+    color:var(--muted);
+    margin-bottom:20px;
+}
+
+.preview-pages{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:14px;
+}
+
+.preview-page{
+    display:block;
+    width:100%;
+    min-width:0;
+    padding:0;
+    border:1px solid rgba(16,24,39,.12);
+    border-radius:8px;
+    overflow:hidden;
+    background:white;
+    box-shadow:var(--soft-shadow);
+    cursor:pointer;
+    transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
+}
+
+.preview-page:hover{
+    transform:translateY(-4px);
+    border-color:rgba(245,159,85,.45);
+    box-shadow:0 22px 48px rgba(16,24,39,.16);
+}
+
+.preview-page img{
+    display:block;
+    width:100%;
+    aspect-ratio:1;
+    object-fit:cover;
+}
+
+.preview-page span{
+    display:block;
+    min-height:56px;
+    padding:11px 12px 12px;
+    color:var(--text);
+    font-size:.82rem;
+    font-weight:800;
+    line-height:1.25;
+    text-align:left;
+}
+
+.preview-dialog{
+    width:min(980px,92vw);
+    max-height:92vh;
+    padding:0;
+    border:0;
+    border-radius:12px;
+    background:var(--cream-2);
+    box-shadow:0 30px 100px rgba(2,4,10,.46);
+}
+
+.preview-dialog::backdrop{
+    background:rgba(2,4,10,.74);
+    backdrop-filter:blur(8px);
+}
+
+.preview-dialog-inner{
+    display:grid;
+    gap:12px;
+    padding:14px;
+}
+
+.preview-dialog button{
+    justify-self:end;
+    min-height:40px;
+    border:0;
+    border-radius:999px;
+    padding:8px 14px;
+    color:white;
+    background:var(--navy);
+    font:inherit;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.preview-dialog img{
+    display:block;
+    width:100%;
+    max-height:80vh;
+    object-fit:contain;
+    background:white;
+    border-radius:8px;
+}
+
 .btn.muted{
     color:rgba(255,255,255,.62);
     background:rgba(255,255,255,.08);
@@ -1628,6 +1745,11 @@ footer{
         grid-template-columns:1fr;
     }
 
+    .preview-group{
+        grid-template-columns:1fr;
+        gap:18px;
+    }
+
     .product-book-pair{
         min-height:245px;
         margin-bottom:24px;
@@ -1652,6 +1774,10 @@ footer{
     }
 
     .gigos .action-grid{
+        grid-template-columns:1fr;
+    }
+
+    .preview-pages{
         grid-template-columns:1fr;
     }
 
@@ -1841,6 +1967,107 @@ footer{
         </div>
     </section>
 
+    <section class="section soft" id="previews">
+        <div class="container">
+            <div class="section-heading">
+                <h2>Preview the workbook pages.</h2>
+                <p>Take a look inside the planning pages, dashboards, and story-driven tools behind the North Star workbook collection.</p>
+            </div>
+
+            <div class="preview-grid">
+                <article class="preview-group">
+                    <div class="preview-copy">
+                        <h3>GigOS Music Business Workbook</h3>
+                        <p>Planning systems for independent bands, from brand clarity to show flow and sustainable booking habits.</p>
+                        <a href="https://a.co/d/070O4UgT" class="btn" target="_blank" rel="noopener">View GigOS on Amazon</a>
+                    </div>
+                    <div class="preview-pages" aria-label="GigOS workbook sample pages">
+                        <button class="preview-page" type="button" data-preview-src="01-How-to-Use-GigOS-Workbook-KDP-Square.png" data-preview-alt="GigOS workbook how to use sample page">
+                            <img src="01-How-to-Use-GigOS-Workbook-KDP-Square.png" alt="GigOS workbook how to use sample page">
+                            <span>How To Use This Workbook</span>
+                        </button>
+                        <button class="preview-page" type="button" data-preview-src="02-Brand-Builder-Insight-and-Worksheet-KDP-Square.png" data-preview-alt="GigOS brand builder insight and worksheet sample pages">
+                            <img src="02-Brand-Builder-Insight-and-Worksheet-KDP-Square.png" alt="GigOS brand builder insight and worksheet sample pages">
+                            <span>Brand Builder</span>
+                        </button>
+                        <button class="preview-page" type="button" data-preview-src="03-Energy-Mapping-Insight-and-Worksheet-KDP-Square.png" data-preview-alt="GigOS energy mapping insight and worksheet sample pages">
+                            <img src="03-Energy-Mapping-Insight-and-Worksheet-KDP-Square.png" alt="GigOS energy mapping insight and worksheet sample pages">
+                            <span>Energy Mapping System</span>
+                        </button>
+                        <button class="preview-page" type="button" data-preview-src="04-GigOS-Workbook-Summary-KDP-Square.png" data-preview-alt="GigOS workbook summary preview collage">
+                            <img src="04-GigOS-Workbook-Summary-KDP-Square.png" alt="GigOS workbook summary preview collage">
+                            <span>Workbook Summary</span>
+                        </button>
+                    </div>
+                </article>
+
+                <article class="preview-group">
+                    <div class="preview-copy">
+                        <h3>How Working Bands Work</h3>
+                        <p>Real lessons from a regional New England band, paired with practical workbook pages for building better shows.</p>
+                        <a href="https://a.co/d/07tyMhhh" class="btn" target="_blank" rel="noopener">View How Working Bands Work on Amazon</a>
+                    </div>
+                    <div class="preview-pages" aria-label="How Working Bands Work sample pages">
+                        <button class="preview-page" type="button" data-preview-src="ch 1.jpg" data-preview-alt="How Working Bands Work chapter one sample page">
+                            <img src="ch 1.jpg" alt="How Working Bands Work chapter one sample page">
+                            <span>Chapter One</span>
+                        </button>
+                        <button class="preview-page" type="button" data-preview-src="ch1pg2.png" data-preview-alt="How Working Bands Work chapter sample page about showing up like it mattered">
+                            <img src="ch1pg2.png" alt="How Working Bands Work chapter sample page about showing up like it mattered">
+                            <span>Story Sample</span>
+                        </button>
+                        <button class="preview-page" type="button" data-preview-src="ch1pg3.png" data-preview-alt="How Working Bands Work chapter sample page about the road that led there">
+                            <img src="ch1pg3.png" alt="How Working Bands Work chapter sample page about the road that led there">
+                            <span>The Road That Led There</span>
+                        </button>
+                        <button class="preview-page" type="button" data-preview-src="ch1pg4.png" data-preview-alt="How Working Bands Work chapter sample page about when venues went quiet">
+                            <img src="ch1pg4.png" alt="How Working Bands Work chapter sample page about when venues went quiet">
+                            <span>Venue Lessons</span>
+                        </button>
+                        <button class="preview-page" type="button" data-preview-src="wbch1pg1.png" data-preview-alt="How Working Bands Work in-person visit planner worksheet">
+                            <img src="wbch1pg1.png" alt="How Working Bands Work in-person visit planner worksheet">
+                            <span>In-Person Visit Planner</span>
+                        </button>
+                        <button class="preview-page" type="button" data-preview-src="wbch1pg2.png" data-preview-alt="How Working Bands Work what success looks like worksheet">
+                            <img src="wbch1pg2.png" alt="How Working Bands Work what success looks like worksheet">
+                            <span>What Success Looks Like</span>
+                        </button>
+                        <button class="preview-page" type="button" data-preview-src="wbch2pg1.png" data-preview-alt="How Working Bands Work weekly social media planner worksheet">
+                            <img src="wbch2pg1.png" alt="How Working Bands Work weekly social media planner worksheet">
+                            <span>Weekly Social Media Planner</span>
+                        </button>
+                    </div>
+                </article>
+
+                <article class="preview-group">
+                    <div class="preview-copy">
+                        <h3>STAR Daily Caregiver Log</h3>
+                        <p>Daily tracking pages and monthly dashboards for health, behavior, participation, and daily living supports.</p>
+                        <a href="https://www.amazon.com/STAR-Daily-Caregiver-Log-Participation/dp/B0HF4XVGTD" class="btn" target="_blank" rel="noopener">View STAR Log on Amazon</a>
+                    </div>
+                    <div class="preview-pages" aria-label="STAR Daily Caregiver Log sample pages">
+                        <button class="preview-page" type="button" data-preview-src="01-Quick-Reference-Guide-KDP-Square.png" data-preview-alt="STAR Daily Caregiver Log quick reference guide sample page">
+                            <img src="01-Quick-Reference-Guide-KDP-Square.png" alt="STAR Daily Caregiver Log quick reference guide sample page">
+                            <span>Quick Reference Guide</span>
+                        </button>
+                        <button class="preview-page" type="button" data-preview-src="02-Participation-and-Independence-KDP-Square.png" data-preview-alt="STAR Daily Caregiver Log participation and independence sample page">
+                            <img src="02-Participation-and-Independence-KDP-Square.png" alt="STAR Daily Caregiver Log participation and independence sample page">
+                            <span>Participation & Independence</span>
+                        </button>
+                        <button class="preview-page" type="button" data-preview-src="03-Health-Behavior-ADL-Dashboard-KDP-Square.png" data-preview-alt="STAR Daily Caregiver Log health behavior and ADL dashboard sample page">
+                            <img src="03-Health-Behavior-ADL-Dashboard-KDP-Square.png" alt="STAR Daily Caregiver Log health behavior and ADL dashboard sample page">
+                            <span>Health & ADL Dashboard</span>
+                        </button>
+                        <button class="preview-page" type="button" data-preview-src="04-Monthly-Outcomes-Dashboard-KDP-Square.png" data-preview-alt="STAR Daily Caregiver Log monthly outcomes dashboard sample page">
+                            <img src="04-Monthly-Outcomes-Dashboard-KDP-Square.png" alt="STAR Daily Caregiver Log monthly outcomes dashboard sample page">
+                            <span>Monthly Outcomes Dashboard</span>
+                        </button>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
     <section class="section waitlist" id="resources">
         <div class="container">
             <div class="waitlist-panel" id="waitlist">
@@ -1895,11 +2122,38 @@ footer{
 <footer>
     North Star Solutions Tech © 2026
 </footer>
+<dialog class="preview-dialog" id="preview-dialog" aria-label="Workbook page preview">
+    <div class="preview-dialog-inner">
+        <button type="button" id="preview-close">Close</button>
+        <img id="preview-dialog-image" src="" alt="">
+    </div>
+</dialog>
 <script>
 const waitlistForm = document.querySelector("#waitlist-form");
 const resourceCtas = document.querySelectorAll(".resource-cta");
 const resourceDownloads = document.querySelector("#resource-downloads");
 const waitlistEndpoint = "https://script.google.com/macros/s/AKfycbwtAnoNuTTGFYoz13dDkp6Ss7ZluOcy88wbUKa9y23-xD45knhBUSKGzgAdr58QRvvgiw/exec";
+const previewDialog = document.querySelector("#preview-dialog");
+const previewDialogImage = document.querySelector("#preview-dialog-image");
+const previewClose = document.querySelector("#preview-close");
+
+document.querySelectorAll(".preview-page").forEach((button) => {
+    button.addEventListener("click", () => {
+        previewDialogImage.src = button.dataset.previewSrc;
+        previewDialogImage.alt = button.dataset.previewAlt;
+        previewDialog.showModal();
+    });
+});
+
+previewClose.addEventListener("click", () => {
+    previewDialog.close();
+});
+
+previewDialog.addEventListener("click", (event) => {
+    if (event.target === previewDialog) {
+        previewDialog.close();
+    }
+});
 
 resourceCtas.forEach((cta) => {
     cta.addEventListener("click", () => {
