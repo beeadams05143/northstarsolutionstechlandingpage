@@ -13,15 +13,10 @@
 <style>
 :root{
     --navy:#101827;
-    --navy-2:#172235;
     --cream:#fbf6ea;
     --cream-2:#fffaf0;
     --amber:#fac775;
-    --orange:#f59f55;
-    --sage:#7ea99a;
     --text:#252937;
-    --muted:#667085;
-    --line:rgba(16,24,39,.12);
     --shadow:0 22px 70px rgba(16,24,39,.16);
 }
 
@@ -93,6 +88,22 @@ body:before{
     box-shadow:0 0 28px rgba(62,206,223,.34);
 }
 
+.status-pill{
+    display:inline-flex;
+    align-items:center;
+    min-height:34px;
+    border-radius:999px;
+    padding:7px 12px;
+    margin-bottom:18px;
+    color:#d9fbff;
+    background:rgba(34,204,222,.12);
+    border:1px solid rgba(34,204,222,.24);
+    font-size:.78rem;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+}
+
 h1{
     margin:0 0 16px;
     font-size:clamp(2.4rem,6vw,4.7rem);
@@ -119,13 +130,16 @@ p{
     align-items:center;
     justify-content:center;
     min-height:50px;
+    border:0;
     border-radius:999px;
     padding:14px 22px;
     color:var(--navy);
     background:linear-gradient(135deg,var(--amber),#ffb36e);
     text-decoration:none;
+    font:inherit;
     font-weight:800;
     box-shadow:0 14px 28px rgba(245,159,85,.28);
+    cursor:pointer;
     transition:transform .25s ease,box-shadow .25s ease,filter .25s ease;
 }
 
@@ -148,20 +162,16 @@ p{
     font-size:.96rem;
 }
 
-.session-note{
-    min-height:24px;
-    margin-top:14px;
-    color:rgba(250,199,117,.86);
-    font-size:.86rem;
-    font-weight:700;
-}
-
 .cover{
     width:min(260px,100%);
     justify-self:center;
     border-radius:10px;
     transform:rotate(-2deg);
     box-shadow:0 26px 58px rgba(0,0,0,.36),10px 10px 0 rgba(242,238,224,.82);
+}
+
+[hidden]{
+    display:none !important;
 }
 
 @media (max-width:760px){
@@ -194,34 +204,91 @@ p{
             <span>North Star Solutions Tech</span>
         </div>
 
-        <h1>Thank You for Your Purchase!</h1>
-        <p>Your STAR Daily Caregiver Log is ready.</p>
-
-        <div class="actions">
-            <a class="btn" id="download-link" href="STAR_CAREGIVER_LOG_PDF_URL">Download STAR Daily Caregiver Log PDF</a>
-            <a class="btn secondary" href="../../">Return to North Star Solutions Tech</a>
+        <div id="verifying-panel">
+            <span class="status-pill">Secure Download</span>
+            <h1>Verifying your purchase...</h1>
+            <p>Please wait while we confirm your STAR Daily Caregiver Log purchase with Stripe.</p>
         </div>
 
-        <p class="instruction">Save the PDF to your device, print pages as needed, or import it into a PDF annotation app such as Goodnotes or Notability.</p>
-        <p class="session-note" id="session-note" aria-live="polite"></p>
+        <div id="success-panel" hidden>
+            <span class="status-pill">Purchase Verified</span>
+            <h1>Thank You for Your Purchase!</h1>
+            <p>Your STAR Daily Caregiver Log is ready.</p>
+
+            <div class="actions">
+                <a class="btn" id="download-link" href="#" rel="nofollow">Download STAR Daily Caregiver Log PDF</a>
+                <a class="btn secondary" href="../../">Return to North Star Solutions Tech</a>
+            </div>
+
+            <p class="instruction">Save the PDF to your device, print pages as needed, or import it into a PDF annotation app such as Goodnotes or Notability.</p>
+        </div>
+
+        <div id="error-panel" hidden>
+            <span class="status-pill">Verification Needed</span>
+            <h1>We couldn't verify a completed purchase for this download.</h1>
+            <p>If you just completed checkout, return to your Stripe receipt and use the download link again. You can also purchase the digital log below.</p>
+
+            <div class="actions">
+                <a class="btn secondary" href="../../#star">Return to the STAR Caregiver Log page</a>
+                <a class="btn" href="https://buy.stripe.com/14A14n5oS6VFf973SQ3wQ09">Purchase the Digital Caregiver Log</a>
+            </div>
+        </div>
     </section>
 
     <img class="cover" src="../../caregiverlog1800.jpeg" alt="STAR Daily Caregiver Log cover">
 </main>
 
 <script>
-const STAR_CAREGIVER_LOG_PDF_URL = "STAR_CAREGIVER_LOG_PDF_URL";
+const VERIFY_ENDPOINT = "/.netlify/functions/verify-star-caregiver-log-purchase";
+const STRIPE_PAYMENT_LINK_URL = "https://buy.stripe.com/14A14n5oS6VFf973SQ3wQ09";
+
+const verifyingPanel = document.querySelector("#verifying-panel");
+const successPanel = document.querySelector("#success-panel");
+const errorPanel = document.querySelector("#error-panel");
 const downloadLink = document.querySelector("#download-link");
-const sessionNote = document.querySelector("#session-note");
+const purchaseLink = errorPanel.querySelector(".btn:not(.secondary)");
 const params = new URLSearchParams(window.location.search);
 const checkoutSessionId = params.get("session_id") || params.get("checkout_session_id");
 
-downloadLink.href = STAR_CAREGIVER_LOG_PDF_URL;
+purchaseLink.href = STRIPE_PAYMENT_LINK_URL;
 
-if (checkoutSessionId) {
-    window.STAR_CAREGIVER_LOG_CHECKOUT_SESSION_ID = checkoutSessionId;
-    sessionNote.textContent = "Checkout session received. Payment verification should be handled server-side before this link is finalized.";
+function showPanel(panel) {
+    verifyingPanel.hidden = panel !== verifyingPanel;
+    successPanel.hidden = panel !== successPanel;
+    errorPanel.hidden = panel !== errorPanel;
 }
+
+async function verifyPurchase() {
+    if (!checkoutSessionId) {
+        showPanel(errorPanel);
+        return;
+    }
+
+    try {
+        const response = await fetch(VERIFY_ENDPOINT, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                session_id: checkoutSessionId
+            })
+        });
+        const result = await response.json();
+
+        if (!response.ok || !result.verified || !result.downloadUrl) {
+            showPanel(errorPanel);
+            return;
+        }
+
+        downloadLink.href = result.downloadUrl;
+        showPanel(successPanel);
+    } catch (error) {
+        showPanel(errorPanel);
+    }
+}
+
+verifyPurchase();
 </script>
 </body>
 </html>
