@@ -106,7 +106,11 @@
         "Shared team communication",
         "Caregiver check-ins and daily support documentation",
         "Health, routines, participation, and service records",
-        "Reports and patterns to inform shared decisions"
+        "Reports and patterns to inform shared decisions",
+        "Physical and mental health observations over time",
+        "Visual health, goal, and outcome reports",
+        "PDF report export and sharing",
+        "Personal sign-ins with role-based access"
       ]
     },
     {
@@ -132,6 +136,9 @@
 @media(max-width:850px){.hero-grid{grid-template-columns:1fr;gap:36px}.hero-panel{max-width:600px}.nav{align-items:flex-start;margin-bottom:48px}.nav-links{justify-content:flex-end;gap:14px}.founder-grid{gap:32px;grid-template-columns:.8fr 1.2fr}.signup-grid{gap:32px}.action-grid{gap:28px}.section{padding-block:64px}}
 @media(max-width:600px){.container{width:calc(100% - 36px)}.nav{flex-direction:column;gap:22px}.nav-links{justify-content:flex-start;gap:12px 20px}.brand{max-width:none}.hero{padding-bottom:48px}h1{font-size:2.8rem}.hero-panel{padding:26px}.roadmap-grid,.founder-grid,.signup-grid,.action-grid{grid-template-columns:1fr}.founder-photo{max-width:360px}.card{padding:26px}.section{padding-block:52px}.buttons .btn{width:100%}.action-symbol{max-width:360px;aspect-ratio:1.8}.footer-inner{display:block}.footer-contact{margin-top:16px}.signup .btn{width:100%}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+
+.star-brand{display:flex;align-items:center;gap:18px;margin-bottom:26px}.star-brand img{width:84px;height:84px;border-radius:22px}.star-brand strong{color:#fff4dc;font-size:2.7rem;letter-spacing:.08em;line-height:1}.product-brand-icon{width:76px;height:76px;border-radius:19px;margin-bottom:24px}.action-symbol{padding:30px 20px;min-height:310px;aspect-ratio:auto}.action-symbol img{width:min(180px,70%);height:auto;border-radius:26px;margin-bottom:20px;box-shadow:0 14px 40px #0004}.action-symbol strong{letter-spacing:-.03em}.health-overview{margin-top:36px;padding:34px;border:1px solid #c9d8d5;border-radius:24px;background:#edf2ed}.health-overview h3{font-size:clamp(1.5rem,2.5vw,2rem)}.health-overview p:not(.eyebrow){max-width:940px;color:var(--muted)}.health-overview .access-note{border-top:1px solid #cedbd5;padding-top:20px;margin-top:24px;margin-bottom:0;font-size:.88rem}.access-note strong{display:block;margin-bottom:5px;color:var(--ink)}
+@media(max-width:600px){.health-overview{padding:26px}.star-brand img{width:72px;height:72px}.star-brand strong{font-size:2.2rem}.action-symbol{aspect-ratio:auto}}
 </style>
 </head>
 <body>
@@ -152,7 +159,7 @@
         <p class="trust-line">Woman-Owned &amp; Led in Chester, Vermont</p>
       </div>
       <aside class="hero-panel" aria-label="The purpose behind STAR">
-        <div class="star-mark" aria-hidden="true">✦</div>
+        <div class="star-brand"><img src="assets/star-app-icon.png" alt="" width="180" height="180"><strong>STAR</strong></div>
         <span class="status">Support Tool for Autonomy and Reflection</span>
         <h2>Voice. Communication. Documentation.</h2>
         <p>Person-centered planning starts with the individual’s interests, preferences, and goals. Shared conversations and documented experiences help the team understand what’s happening over time, ask better questions, and plan support with the person.</p>
@@ -167,6 +174,7 @@
       <div class="section-intro"><p class="eyebrow">In production</p><h2 id="roadmap-heading">Thoughtful tools. Taking shape.</h2><p class="lead muted">Our flagship STAR App and redesigned caregiver log bring individual preferences and everyday information together, helping people and their teams plan support with a clearer shared understanding.</p></div>
       <div class="roadmap-grid">
         <article class="card flagship" id="star" aria-labelledby="star-heading">
+          <img class="product-brand-icon" src="assets/star-app-icon.png" alt="STAR app icon" width="180" height="180" loading="lazy">
           <span class="status">In Development · Waitlist Open</span><h3 id="star-heading">The STAR App</h3><p class="product-name">Support Tool for Autonomy and Reflection</p>
           <p>STAR is being developed as one connected place for individual participation, team communication, and support documentation. Individuals can share preferences and reflect on experiences, while families and caregivers coordinate, record daily support, and review patterns. Together, the person’s input and the information gathered over time support more informed conversations about goals, leisure, activities, and everyday decisions.</p>
           <ul class="feature-list"><li>Support individual input through pictures, simple choices, emoji responses, and read-aloud tools.</li><li>Bring the individual’s preferences into person-centered goal planning and activity choices.</li><li>Keep the support team connected through shared communication.</li><li>Document daily health, routines, participation, services, who provided support, and where.</li><li>Bring reports and patterns alongside the individual’s own input to inform decisions together.</li></ul>
@@ -179,6 +187,14 @@
           <a class="btn secondary" href="#waitlist" data-interest="STAR Caregiver Log">Get Caregiver Log Updates</a>
         </article>
       </div>
+
+      <section class="health-overview" aria-labelledby="health-heading">
+        <p class="eyebrow">The person’s voice, alongside a clearer record</p>
+        <h3 id="health-heading">Health patterns that support informed care.</h3>
+        <p>Caregiver check-ins provide a place to document physical and mental health observations alongside daily routines and support. A consistent record helps individuals, caregivers, and healthcare professionals look at patterns over time, with more context than memory or the events of the last few days alone.</p>
+        <p>Visual reports bring health information, participation, goals, and outcomes into a format that’s easier to understand. Reports can be exported as PDFs to share relevant information with healthcare professionals and members of the support team, supporting more informed conversations about care.</p>
+        <p class="access-note"><strong>Personal sign-ins. Access based on each person’s role.</strong> Each team member has their own sign-in, with access to information and tools based on their assigned role.</p>
+      </section>
     </div>
   </section>
   <section class="section founder" id="founder-story" aria-labelledby="founder-heading">
@@ -196,7 +212,7 @@
   </section>
   <section class="section" id="action" aria-labelledby="action-heading">
     <div class="container action-grid">
-      <div class="action-symbol" aria-hidden="true"><span>🎬</span><strong>Action!</strong><p>You direct. You star.</p></div>
+      <div class="action-symbol" role="img" aria-label="Action! app branding: a glowing clapperboard with a star and play button, with the words Action! You direct. You star."><img src="assets/action-app-icon.png" alt="" width="512" height="512" loading="lazy"><strong>Action!</strong><p>You direct. You star.</p></div>
       <div class="action-copy"><p class="eyebrow">Also from North Star</p><h2 id="action-heading">Bring everyday skills to life with Action!</h2><p>Create personalized skills movies with neurodivergent young adults. Guided scenes help families and support teams make social, safety, and everyday life skills into familiar stories to create and watch together.</p><p>Inspired by the home videos we began making with Benny when he was eight, Action! puts connection and the fun of creating together at the heart of learning.</p><span class="status">Preview Only</span>
         <details class="action-preview">
           <summary class="btn secondary">Take a Look at Action!</summary>
