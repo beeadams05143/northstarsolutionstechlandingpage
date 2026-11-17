@@ -1842,324 +1842,38 @@ footer{
     }
 
 }
+/* App-focused landing page */
+.hero-visual{min-height:460px;grid-template-rows:auto;}
+.action-icon{background:linear-gradient(135deg,#754fb3,#273a73);font-size:2rem;}
+.app-tile{text-decoration:none;}
+.app-tile:focus-visible{outline:3px solid var(--amber);outline-offset:5px;}
+@media(max-width:640px){.nav{flex-wrap:wrap;margin-bottom:36px;}.nav-links{flex-wrap:wrap;}.hero-visual{min-height:420px;}.actions{grid-template-columns:1fr;}}
 </style>
 </head>
 
 <body>
 <main class="page">
-    <section class="hero">
-        <div class="hero-inner">
-            <nav class="nav" aria-label="Main navigation">
-                <div class="brand">
-                    <img class="brand-mark" src="nsst-logo.jpg" alt="North Star Solutions Tech logo">
-                    <span>North Star Solutions Tech</span>
-                </div>
-                <div class="nav-links">
-                    <a href="#gigos">GigOS</a>
-                    <a href="#resources">Resources</a>
-                    <a href="#star">STAR App</a>
-                </div>
-            </nav>
-
-            <div class="hero-grid">
-                <div class="hero-content">
-                    <h1>Better systems for real life. One North Star.</h1>
-                    <p class="hero-copy">
-                        Practical workbooks and digital tools built from real-life experience: booked shows, caregiving notes, daily tracking, repeatable systems, and the kind of structure people need when everything cannot live in their head anymore.
-                    </p>
-                    <div class="actions">
-                        <a href="#waitlist" class="btn resource-cta" data-resource="GigOS Performance Agreement" aria-label="Join the mailing list to get the free GigOS Performance Agreement" title="Join the mailing list to get the free GigOS Performance Agreement">Get Free Performance Agreement</a>
-                        <a href="#waitlist" class="btn resource-cta" data-resource="GigOS Pricing Worksheet" aria-label="Join the mailing list to get the free GigOS Pricing Worksheet" title="Join the mailing list to get the free GigOS Pricing Worksheet">Get Free Pricing Worksheet</a>
-                        <a href="#products" class="btn secondary">Explore Products</a>
-                        <a href="https://www.amazon.com/STAR-Daily-Caregiver-Log-Participation/dp/B0HF4XVGTD" class="btn star-action" target="_blank" rel="noopener">Buy STAR Caregiver Log Book</a>
-                    </div>
-                </div>
-
-                <div class="hero-visual" aria-label="North Star product previews">
-                    <div class="glow-orbit"></div>
-                    <div class="book-stack" aria-label="GigOS workbook covers">
-                        <div class="workbook">
-                            <a class="cover-front" href="https://a.co/d/07tyMhhh" target="_blank" rel="noopener" aria-label="Buy How Working Bands Work on Amazon">
-                                <img class="book-cover-image" src="cover.jpeg" alt="How Working Bands Work book cover">
-                            </a>
-                        </div>
-                        <div class="workbook">
-                            <a class="cover-front" href="https://a.co/d/070O4UgT" target="_blank" rel="noopener" aria-label="Buy GigOS Music Business Workbook on Amazon">
-                                <img class="book-cover-image" src="GIgOS Worbook NEW COVER copy.jpg" alt="GigOS workbook book cover">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="product-mockups" aria-label="Products in development">
-                        <div class="phone-mockup" aria-label="STAR and GigOS app preview">
-                            <div class="phone-screen">
-                                <span class="phone-title">North Star Apps</span>
-                                <div class="app-grid">
-                                    <div class="app-tile">
-                                        <div class="app-icon star-icon" aria-hidden="true"></div>
-                                        <strong>STAR</strong>
-                                    </div>
-                                    <div class="app-tile">
-                                        <div class="app-icon gigos-icon" aria-hidden="true">
-                                            <svg class="gigos-app-logo" viewBox="0 0 180 78" role="img" aria-label="GigOS slider logo">
-                                                <rect class="slider-track" x="24" y="10" width="132" height="8" rx="4"></rect>
-                                                <circle class="slider-knob" cx="78" cy="14" r="13"></circle>
-                                                <rect class="slider-track" x="24" y="35" width="132" height="8" rx="4"></rect>
-                                                <circle class="slider-knob" cx="111" cy="39" r="13"></circle>
-                                                <rect class="slider-track" x="24" y="60" width="132" height="8" rx="4"></rect>
-                                                <circle class="slider-knob" cx="92" cy="64" r="13"></circle>
-                                            </svg>
-                                        </div>
-                                        <strong>GigOS</strong>
-                                    </div>
-                                </div>
-                                <span class="phone-status">Apps in development</span>
-                            </div>
-                        </div>
-                        <a class="logbook-mockup cover-image" href="https://www.amazon.com/STAR-Daily-Caregiver-Log-Participation/dp/B0HF4XVGTD" target="_blank" rel="noopener" aria-label="Buy STAR Daily Caregiver Log on Amazon">
-                            <img class="logbook-cover-image" src="caregiverlog1800.jpeg" alt="STAR Daily Caregiver Log cover">
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section dark" id="products">
-        <div class="container">
-            <div class="section-heading">
-                <h2>Tools built for the work people actually have to do.</h2>
-                <p>These are not blank notebooks with pretty covers. They are practical systems for booking shows, tracking care, making decisions, documenting patterns, and staying organized when the details matter.</p>
-            </div>
-
-            <div class="product-grid">
-                <article class="product-card gigos" id="gigos">
-                    <div class="product-top">
-                        <div class="icon-bubble">♪</div>
-                        <span class="pill">For independent musicians</span>
-                    </div>
-                    <div class="product-book-pair" aria-label="GigOS workbook covers">
-                        <div class="workbook-mini-cover product-workbook-cover">
-                            <a class="cover-front" href="https://a.co/d/070O4UgT" target="_blank" rel="noopener" aria-label="Buy GigOS Music Business Workbook on Amazon">
-                                <img class="book-cover-image" src="GIgOS Worbook NEW COVER copy.jpg" alt="GigOS workbook book cover">
-                            </a>
-                        </div>
-                        <div class="workbook-mini-cover product-workbook-cover">
-                            <a class="cover-front" href="https://a.co/d/07tyMhhh" target="_blank" rel="noopener" aria-label="Buy How Working Bands Work on Amazon">
-                                <img class="book-cover-image" src="cover.jpeg" alt="How Working Bands Work book cover">
-                            </a>
-                        </div>
-                    </div>
-                    <h3>GigOS — Workbooks, App, and Booking System</h3>
-                    <p>
-                        GigOS was built from the real systems behind a regional band that booked hundreds of shows over five years. It gives independent musicians the structure to find better rooms, pitch clearly, plan stronger sets, price with confidence, follow up professionally, and turn scattered gig work into a repeatable booking machine.
-                    </p>
-
-                    <div class="gigos-workbook-note">
-                        <div>
-                            <strong>GigOS Music Business Workbook</strong>
-                            A working system for independent bands that need booking plans, venue research, outreach scripts, set planning, and show-building tools they will actually use.
-                        </div>
-                        <div>
-                            <strong>How Working Bands Work</strong>
-                            Real lessons from the road, the calendar, the phone calls, the quiet seasons, and the decisions that helped turn local shows into a sustainable regional band business.
-                        </div>
-                    </div>
-
-                    <div class="gigos-app-callout">
-                        <strong>GigOS App — Coming Soon</strong>
-                        <span>A digital workspace for booking leads, follow-ups, contracts, gig notes, outreach, pricing, and the practical band-business systems that keep shows moving.</span>
-                    </div>
-
-                    <ul class="feature-list">
-                        <li>Performance Agreement Template</li>
-                        <li>Pricing Worksheet</li>
-                        <li>Outreach Templates</li>
-                        <li>Workbook Collection</li>
-                        <li>Booking Tools</li>
-                        <li>New Resources in Progress</li>
-                    </ul>
-
-                    <div class="action-grid">
-                        <a href="#waitlist" class="btn app-btn">Join GigOS App Waitlist</a>
-                        <a href="#waitlist" class="btn resource-cta" data-resource="GigOS Performance Agreement" aria-label="Join the mailing list to get the free GigOS Performance Agreement" title="Join the mailing list to get the free GigOS Performance Agreement">Get Free Performance Agreement</a>
-                        <a href="#waitlist" class="btn resource-cta" data-resource="GigOS Pricing Worksheet" aria-label="Join the mailing list to get the free GigOS Pricing Worksheet" title="Join the mailing list to get the free GigOS Pricing Worksheet">Get Free Pricing Worksheet</a>
-                        <a href="https://a.co/d/070O4UgT" class="btn secondary" target="_blank" rel="noopener">Buy GigOS Workbook on Amazon</a>
-                        <a href="https://a.co/d/07tyMhhh" class="btn secondary" target="_blank" rel="noopener">Buy How Working Bands Work on Amazon</a>
-                    </div>
-                </article>
-
-                <article class="product-card star" id="star">
-                    <span class="star-ribbon">⭐ CAREGIVER LOG AVAILABLE NOW ⭐</span>
-                    <div class="product-top">
-                        <div class="icon-bubble">
-                            <img class="star-logo" src="nsst-logo.jpg" alt="North Star Solutions Tech logo">
-                        </div>
-                        <span class="pill">Support platform</span>
-                    </div>
-                    <div class="star-logbook-cover">
-                        <img src="caregiverlog1800.jpeg" alt="STAR Daily Caregiver Log cover">
-                    </div>
-                    <h3>STAR Daily Caregiver Log — Support That Stays Human</h3>
-                    <p>
-                        The STAR Daily Caregiver Log helps caregivers capture the details that are too important to lose: health changes, behavior patterns, participation, daily living skills, notes, and monthly trends. It gives families and support teams a shared record they can actually use for better conversations, better care, and better follow-through.
-                    </p>
-
-                    <p class="small">Preview Features:</p>
-                    <ul class="feature-list">
-                        <li>Caregiver Check-Ins</li>
-                        <li>Reports & Insights</li>
-                        <li>Communication Tools</li>
-                        <li>Team Support Features</li>
-                    </ul>
-
-                    <div class="action-grid">
-                        <a href="https://www.amazon.com/STAR-Daily-Caregiver-Log-Participation/dp/B0HF4XVGTD" class="btn" target="_blank" rel="noopener">Buy STAR Caregiver Log Book on Amazon</a>
-                        <a href="https://buy.stripe.com/14A14n5oS6VFf973SQ3wQ09" class="btn secondary" aria-label="Get the STAR Daily Caregiver Log printable and iPad digital PDF">Get Digital Caregiver Log — $15.99</a>
-                        <a href="#waitlist" class="btn secondary">Join STAR App Waitlist</a>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <section class="section soft" id="previews">
-        <div class="container">
-            <div class="section-heading">
-                <h2>Preview the workbook pages.</h2>
-                <p>See the actual pages before you buy: planning tools, care logs, dashboards, scripts, prompts, and worksheets designed to be written in, printed, or used digitally.</p>
-            </div>
-
-            <div class="preview-grid">
-                <article class="preview-group">
-                    <div class="preview-copy">
-                        <h3>GigOS Music Business Workbook</h3>
-                        <p>A booking and planning system for independent bands built from hundreds of real regional shows. Use it to clarify your brand, research venues, write better outreach, build stronger sets, track momentum, and stop rebuilding your process every time you need more gigs.</p>
-                        <div class="preview-actions">
-                            <a href="https://a.co/d/070O4UgT" class="btn" target="_blank" rel="noopener">View GigOS on Amazon</a>
-                        </div>
-                    </div>
-                    <div class="preview-pages" aria-label="GigOS workbook sample pages">
-                        <button class="preview-page" type="button" data-preview-src="01-How-to-Use-GigOS-Workbook-KDP-Square.png" data-preview-alt="GigOS workbook how to use sample page">
-                            <img src="01-How-to-Use-GigOS-Workbook-KDP-Square.png" alt="GigOS workbook how to use sample page">
-                            <span>How To Use This Workbook</span>
-                        </button>
-                        <button class="preview-page" type="button" data-preview-src="02-Brand-Builder-Insight-and-Worksheet-KDP-Square.png" data-preview-alt="GigOS brand builder insight and worksheet sample pages">
-                            <img src="02-Brand-Builder-Insight-and-Worksheet-KDP-Square.png" alt="GigOS brand builder insight and worksheet sample pages">
-                            <span>Brand Builder</span>
-                        </button>
-                        <button class="preview-page" type="button" data-preview-src="03-Energy-Mapping-Insight-and-Worksheet-KDP-Square.png" data-preview-alt="GigOS energy mapping insight and worksheet sample pages">
-                            <img src="03-Energy-Mapping-Insight-and-Worksheet-KDP-Square.png" alt="GigOS energy mapping insight and worksheet sample pages">
-                            <span>Energy Mapping System</span>
-                        </button>
-                        <button class="preview-page" type="button" data-preview-src="04-GigOS-Workbook-Summary-KDP-Square.png" data-preview-alt="GigOS workbook summary preview collage">
-                            <img src="04-GigOS-Workbook-Summary-KDP-Square.png" alt="GigOS workbook summary preview collage">
-                            <span>Workbook Summary</span>
-                        </button>
-                    </div>
-                </article>
-
-                <article class="preview-group">
-                    <div class="preview-copy">
-                        <h3>How Working Bands Work</h3>
-                        <p>Part field guide, part workbook, and part honest behind-the-scenes look at what it takes to keep a band working. This is for musicians who want more than inspiration: they need practical lessons, real decisions, and pages that help them build the next show.</p>
-                        <div class="preview-actions">
-                            <a href="https://a.co/d/07tyMhhh" class="btn" target="_blank" rel="noopener">View How Working Bands Work on Amazon</a>
-                        </div>
-                    </div>
-                    <div class="preview-pages" aria-label="How Working Bands Work sample pages">
-                        <button class="preview-page" type="button" data-preview-src="ch 1.jpg" data-preview-alt="How Working Bands Work chapter one sample page">
-                            <img src="ch 1.jpg" alt="How Working Bands Work chapter one sample page">
-                            <span>Chapter One</span>
-                        </button>
-                        <button class="preview-page" type="button" data-preview-src="ch1pg2.png" data-preview-alt="How Working Bands Work chapter sample page about showing up like it mattered">
-                            <img src="ch1pg2.png" alt="How Working Bands Work chapter sample page about showing up like it mattered">
-                            <span>Story Sample</span>
-                        </button>
-                        <button class="preview-page" type="button" data-preview-src="ch1pg3.png" data-preview-alt="How Working Bands Work chapter sample page about the road that led there">
-                            <img src="ch1pg3.png" alt="How Working Bands Work chapter sample page about the road that led there">
-                            <span>The Road That Led There</span>
-                        </button>
-                        <button class="preview-page" type="button" data-preview-src="ch1pg4.png" data-preview-alt="How Working Bands Work chapter sample page about when venues went quiet">
-                            <img src="ch1pg4.png" alt="How Working Bands Work chapter sample page about when venues went quiet">
-                            <span>Venue Lessons</span>
-                        </button>
-                        <button class="preview-page" type="button" data-preview-src="wbch1pg1.png" data-preview-alt="How Working Bands Work in-person visit planner worksheet">
-                            <img src="wbch1pg1.png" alt="How Working Bands Work in-person visit planner worksheet">
-                            <span>In-Person Visit Planner</span>
-                        </button>
-                        <button class="preview-page" type="button" data-preview-src="wbch1pg2.png" data-preview-alt="How Working Bands Work what success looks like worksheet">
-                            <img src="wbch1pg2.png" alt="How Working Bands Work what success looks like worksheet">
-                            <span>What Success Looks Like</span>
-                        </button>
-                        <button class="preview-page" type="button" data-preview-src="wbch2pg1.png" data-preview-alt="How Working Bands Work weekly social media planner worksheet">
-                            <img src="wbch2pg1.png" alt="How Working Bands Work weekly social media planner worksheet">
-                            <span>Weekly Social Media Planner</span>
-                        </button>
-                    </div>
-                </article>
-
-                <article class="preview-group">
-                    <div class="preview-copy">
-                        <h3>STAR Daily Caregiver Log</h3>
-                        <p>A caregiver log built for the information that gets missed when days are busy. Track health, behavior, participation, ADLs, notes, and monthly outcomes so families, caregivers, and teams can spot patterns and make better support decisions.</p>
-                        <div class="preview-actions">
-                            <a href="https://www.amazon.com/STAR-Daily-Caregiver-Log-Participation/dp/B0HF4XVGTD" class="btn" target="_blank" rel="noopener">View STAR Log on Amazon</a>
-                            <a href="https://buy.stripe.com/14A14n5oS6VFf973SQ3wQ09" class="btn secondary" aria-label="Get the STAR Daily Caregiver Log printable and iPad digital PDF">Get Digital Caregiver Log — $15.99</a>
-                        </div>
-                        <p class="instant-download-note">Available as a printable digital PDF for your device, printer, or iPad annotation app.</p>
-                    </div>
-                    <div class="preview-pages" aria-label="STAR Daily Caregiver Log sample pages">
-                        <button class="preview-page" type="button" data-preview-src="01-Quick-Reference-Guide-KDP-Square.png" data-preview-alt="STAR Daily Caregiver Log quick reference guide sample page">
-                            <img src="01-Quick-Reference-Guide-KDP-Square.png" alt="STAR Daily Caregiver Log quick reference guide sample page">
-                            <span>Quick Reference Guide</span>
-                        </button>
-                        <button class="preview-page" type="button" data-preview-src="02-Participation-and-Independence-KDP-Square.png" data-preview-alt="STAR Daily Caregiver Log participation and independence sample page">
-                            <img src="02-Participation-and-Independence-KDP-Square.png" alt="STAR Daily Caregiver Log participation and independence sample page">
-                            <span>Participation & Independence</span>
-                        </button>
-                        <button class="preview-page" type="button" data-preview-src="03-Health-Behavior-ADL-Dashboard-KDP-Square.png" data-preview-alt="STAR Daily Caregiver Log health behavior and ADL dashboard sample page">
-                            <img src="03-Health-Behavior-ADL-Dashboard-KDP-Square.png" alt="STAR Daily Caregiver Log health behavior and ADL dashboard sample page">
-                            <span>Health & ADL Dashboard</span>
-                        </button>
-                        <button class="preview-page" type="button" data-preview-src="04-Monthly-Outcomes-Dashboard-KDP-Square.png" data-preview-alt="STAR Daily Caregiver Log monthly outcomes dashboard sample page">
-                            <img src="04-Monthly-Outcomes-Dashboard-KDP-Square.png" alt="STAR Daily Caregiver Log monthly outcomes dashboard sample page">
-                            <span>Monthly Outcomes Dashboard</span>
-                        </button>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <section class="section waitlist" id="resources">
-        <div class="container">
-            <div class="waitlist-panel" id="waitlist">
-                <div>
-                    <span class="eyebrow">Free GigOS resources</span>
-                    <h2>Join the North Star Mailing List</h2>
-                    <p>
-                        North Star Solutions Tech is creating practical tools, workbooks, apps, and resources for more industries, professions, and communities.
-                    </p>
-                    <p class="small">
-                        Tell us what would make your work or daily life easier, and get free GigOS resources for your music business toolkit.
-                    </p>
-                    <p class="small">
-                        The Performance Agreement and Pricing Worksheet are fillable PDFs, and they are printable if you prefer paper.
-                    </p>
-                    <div class="resource-options">
-                        <a href="#waitlist" class="btn resource-cta" data-resource="GigOS Performance Agreement" aria-label="Join the mailing list to get the free GigOS Performance Agreement" title="Join the mailing list to get the free GigOS Performance Agreement">Get Performance Agreement</a>
-                        <a href="#waitlist" class="btn resource-cta" data-resource="GigOS Pricing Worksheet" aria-label="Join the mailing list to get the free GigOS Pricing Worksheet" title="Join the mailing list to get the free GigOS Pricing Worksheet">Get Pricing Worksheet</a>
-                    </div>
-                </div>
-
+<section class="hero"><div class="hero-inner">
+<nav class="nav" aria-label="Main navigation"><div class="brand"><img class="brand-mark" src="nsst-logo.jpg" alt="North Star Solutions Tech logo"><span>North Star Solutions Tech</span></div><div class="nav-links"><a href="#star">STAR</a><a href="#action">Action!</a><a href="#waitlist">Stay Connected</a></div></nav>
+<div class="hero-grid"><div class="hero-content">
+<h1>Better systems for real life. One North Star.</h1>
+<p class="hero-copy">Practical apps inspired by life with Benny. North Star Solutions Tech creates tools that help individuals, families, and support teams communicate, connect, and bring everyday skills to life.</p>
+<div class="actions"><a href="#star" class="btn">Explore STAR</a><a href="#action" class="btn secondary">Discover Action!</a><a href="#waitlist" class="btn star-action">Get App Updates</a></div>
+</div><div class="hero-visual" aria-label="North Star apps"><div class="glow-orbit"></div><div class="phone-mockup"><div class="phone-screen"><span class="phone-title">North Star Apps</span><div class="app-grid"><a class="app-tile" href="#star"><div class="app-icon star-icon" aria-hidden="true"></div><strong>STAR</strong></a><a class="app-tile" href="#action"><div class="app-icon action-icon" aria-hidden="true">🎬</div><strong>Action!</strong></a></div><span class="phone-status">Communicate. Connect. Create.</span></div></div></div></div>
+</div></section>
+<section class="section dark" id="products"><div class="container"><div class="section-heading"><h2>Real life inspires what we build.</h2><p>Apps that support everyday communication, shared understanding, and learning together.</p></div>
+<div class="product-grid">
+<article class="product-card star" id="star"><div class="product-top"><div class="icon-bubble"><img class="star-logo" src="nsst-logo.jpg" alt="STAR"></div><span class="pill">Individuals, families &amp; support teams</span></div><h3>STAR</h3><p>Support Tool for Autonomy and Reflection</p><p>Bring the individual’s voice and the support team’s observations together. STAR helps families and caregivers share everyday moments, document services, and understand participation and preferences over time.</p><ul class="feature-list"><li>Caregiver check-ins that document services, who provided support, and where</li><li>My STAR Moments for sharing experiences and preferences</li><li>Group chat and team communication</li><li>Reports that help teams see patterns and prepare for conversations</li></ul><div class="action-grid"><a href="https://mynorthstar.netlify.app/" class="btn" target="_blank" rel="noopener">Explore the STAR App</a><a href="#waitlist" class="btn secondary">Get STAR Updates</a></div></article>
+<article class="product-card star" id="action"><div class="product-top"><div class="icon-bubble" aria-hidden="true">🎬</div><span class="pill">Personalized skills movies</span></div><h3>Action!</h3><p>You direct. You star. Bring everyday skills to life.</p><p>Create personalized movies with neurodivergent young adults, putting them at the center of their own stories. Guided scenes help families and support teams turn social, safety, and everyday life skills into familiar movies to make and watch together.</p><ul class="feature-list"><li>Choose a movie and follow guided scenes</li><li>Record your own clips and narration</li><li>Connect and have fun while creating together</li><li>Watch your finished movies in the Movie Theater</li></ul><p>Inspired by the home videos we began making with Benny when he was eight—and his gift for remembering movie scripts.</p><div class="action-grid"><a href="https://lightscameraactionstudio.netlify.app/" class="btn" target="_blank" rel="noopener">Explore Action!</a><a href="#waitlist" class="btn secondary">Get Action! Updates</a></div></article>
+</div></div></section>
+<section class="section waitlist" id="resources"><div class="container"><div class="waitlist-panel" id="waitlist"><div><span class="eyebrow">Stay connected</span><h2>Join the North Star Mailing List</h2><p>Follow what’s happening with STAR and Action!, including app improvements and opportunities to get involved.</p><p class="small">Tell us what would make daily life easier for you, your family, or your support team.</p></div>
                 <form class="signup" name="waitlist" id="waitlist-form">
                     <input type="hidden" name="form-name" value="waitlist">
                     <input type="text" name="name" placeholder="Your Name" autocomplete="name" required>
                     <input type="email" name="email" placeholder="Your Email" autocomplete="email" required>
                     <div class="interest-grid" aria-label="Interests">
-                        <label><input type="checkbox" name="interest" value="GigOS App"> GigOS App</label>
+                        <label><input type="checkbox" name="interest" value="Action! App"> Action! App</label>
                         <label><input type="checkbox" name="interest" value="STAR App"> STAR App</label>
-                        <label><input type="checkbox" name="interest" value="Workbook Resources"> Workbook Resources</label>
                         <label><input type="checkbox" name="interest" value="Workshops"> Workshops</label>
                         <label><input type="checkbox" name="interest" value="Future Tools and Resources"> Future Tools and Resources</label>
                     </div>
@@ -2168,69 +1882,12 @@ footer{
                     <textarea name="notes" placeholder="Anything else you would like us to know?"></textarea>
                     <button class="btn" type="submit">Join Mailing List</button>
                     <p class="form-status" role="status" aria-live="polite"></p>
-                    <div class="resource-downloads" id="resource-downloads" aria-live="polite">
-                        <div class="resource-note">
-                            <p><strong>Your free GigOS PDF is fillable.</strong> On a phone, download it first, then open it in Adobe Acrobat, Files, or another PDF app that supports forms.</p>
-                            <p>If your browser preview will not let you type, use Share or Open In to move the PDF to your PDF app. You can also print a blank copy.</p>
-                        </div>
-                        <a href="/pdfs/GigOS_Performance_Agreement_Fillable.pdf" class="btn" data-download-resource="GigOS Performance Agreement" aria-label="Download the fillable GigOS Performance Agreement PDF, then open it in a PDF app that supports forms" title="Download the fillable GigOS Performance Agreement PDF, then open it in a PDF app that supports forms" download>Download Fillable Performance Agreement PDF</a>
-                        <a href="/pdfs/GigOS_Pricing_Worksheet_Fillable.pdf" class="btn" data-download-resource="GigOS Pricing Worksheet" aria-label="Download the fillable GigOS Pricing Worksheet PDF, then open it in a PDF app that supports forms" title="Download the fillable GigOS Pricing Worksheet PDF, then open it in a PDF app that supports forms" download>Download Fillable Pricing Worksheet PDF</a>
-                    </div>
                 </form>
-            </div>
-        </div>
-    </section>
-</main>
-
-<footer>
-    North Star Solutions Tech © 2026
-</footer>
-<dialog class="preview-dialog" id="preview-dialog" aria-label="Workbook page preview">
-    <div class="preview-dialog-inner">
-        <button type="button" id="preview-close">Close</button>
-        <img id="preview-dialog-image" src="" alt="">
-    </div>
-</dialog>
+</div></div></section>
+</main><footer>North Star Solutions Tech © 2026</footer>
 <script>
 const waitlistForm = document.querySelector("#waitlist-form");
-const resourceCtas = document.querySelectorAll(".resource-cta");
-const resourceDownloads = document.querySelector("#resource-downloads");
 const waitlistEndpoint = "https://script.google.com/macros/s/AKfycbwtAnoNuTTGFYoz13dDkp6Ss7ZluOcy88wbUKa9y23-xD45knhBUSKGzgAdr58QRvvgiw/exec";
-const previewDialog = document.querySelector("#preview-dialog");
-const previewDialogImage = document.querySelector("#preview-dialog-image");
-const previewClose = document.querySelector("#preview-close");
-
-document.querySelectorAll(".preview-page").forEach((button) => {
-    button.addEventListener("click", () => {
-        previewDialogImage.src = button.dataset.previewSrc;
-        previewDialogImage.alt = button.dataset.previewAlt;
-        previewDialog.showModal();
-    });
-});
-
-previewClose.addEventListener("click", () => {
-    previewDialog.close();
-});
-
-previewDialog.addEventListener("click", (event) => {
-    if (event.target === previewDialog) {
-        previewDialog.close();
-    }
-});
-
-resourceCtas.forEach((cta) => {
-    cta.addEventListener("click", () => {
-        const desiredResource = waitlistForm.querySelector('[name="desired-resource"]');
-        const workbookInterest = waitlistForm.querySelector('[name="interest"][value="Workbook Resources"]');
-        const gigosInterest = waitlistForm.querySelector('[name="interest"][value="GigOS App"]');
-
-        desiredResource.value = cta.dataset.resource;
-        workbookInterest.checked = true;
-        gigosInterest.checked = true;
-        resourceDownloads.classList.remove("is-visible");
-    });
-});
-
 waitlistForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
@@ -2271,12 +1928,7 @@ waitlistForm.addEventListener("submit", async (event) => {
             body: JSON.stringify(payload)
         });
 
-        statusMessage.textContent = "Thanks for joining the North Star list. Your free GigOS resource is ready below.";
-        resourceDownloads.classList.add("is-visible");
-        resourceDownloads.querySelectorAll("[data-download-resource]").forEach((download) => {
-            download.hidden = Boolean(desiredResource) && download.dataset.downloadResource !== desiredResource;
-        });
-        resourceDownloads.scrollIntoView({ behavior: "smooth", block: "center" });
+        statusMessage.textContent = "Thanks for joining the North Star mailing list!";
         waitlistForm.reset();
     } catch (error) {
         statusMessage.textContent = "Something went wrong. Please try again.";
@@ -2285,6 +1937,4 @@ waitlistForm.addEventListener("submit", async (event) => {
         submitButton.textContent = "Join Mailing List";
     }
 });
-</script>
-</body>
-</html>
+</script></body></html>
